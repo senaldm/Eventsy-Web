@@ -1,0 +1,63 @@
+/* Styles for the icon circles */
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(180, 80, 80);
+    border-radius: 50%;
+    margin: 0 auto;
+    transition: transform 0.3s; /* Add a transition for the scaling effect */
+  }
+  
+  /* Styles for the icons */
+  .icon {
+    font-size: 36px;
+    color: rgb(29, 2, 2);
+  }
+  
+  /* Scale the circle and icon when hovered */
+  .circle:hover {
+    transform: scale(1.1); /* Increase the size by 10% */
+  }
+  
+  /* Other styles for the container and content */
+  .service_container {
+    display: flex;
+    height: 150vh;
+    justify-content:20%;
+    padding: 0 10%;
+    overflow: hidden;
+    padding-top: 20%;
+  }
+  
+  .service_container > div {
+    flex: 1;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    padding-right: 40px;
+    justify-content: space-between;
+    /* Add margin to create space between columns */
+  }
+  
+  h1 {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    color: antiquewhite;
+    padding-top: 20px;
+  }
+  hr .line{
+    width: 10%;
+    color: rgb(14, 13, 12);
+    border: 1px solid brown;
+  }
+  p {
+    width: 100%;
+    color: azure;
+    font-size: 20px;
+    padding-top: 20px;
+  }
+  

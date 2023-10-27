@@ -1,0 +1,88 @@
+/* Quection.css */
+.second_container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 7%;
+    text-align: start;
+    /* background-image: url('../../assets/brown.png'); */
+    background-color: rgb(65, 43, 21);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 150vh;
+    background-position: center;
+    padding-top: 10%;
+    position: relative;
+}
+
+.second_container img.image {
+    position: absolute;
+    top: 35%;
+    right: 7%;
+    max-width: 50%;
+    height: 100vh;
+    border-radius: 10px;
+}
+h2{
+    font-size: 50px;
+    padding-bottom: 20px;
+    width: 50%;
+}
+.subheading {
+    font-size: 20px;
+    font-family: var(--font-alt);
+    color: var(--color-golden);
+    padding-bottom: 20px;
+}
+
+.heading {
+    font-size: 20px;
+    color: azure;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-bottom: 10px;
+  
+    
+}
+
+.quection_and_answers {
+    font-size: 20px;
+    color: antiquewhite;
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column;
+    
+   /* Add margin-top to create space between heading and questions */
+}
+
+p {
+    margin-top: 10px; /* Add space above and below paragraphs */
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    width: 10%;
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+hr.active {
+    position: absolute;
+    width: 100%;
+    border: 0.1px solid antiquewhite;
+    transition: top 0.3s ease; /* Add smooth transition for top position */
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+span > h2 {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.hide hr.active {
+    top: -5px; /* Adjust this value to move the line off-screen */
+}

@@ -1,0 +1,86 @@
+/* Modify the styles without changing positions */
+
+.vision_container {
+  background-image: url('../../assets/couple2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 150vh;
+  background-position: center;
+  background-attachment: fixed;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  filter: grayscale(80%);
+}
+
+.vision_container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 150vh;
+  background: rgba(49, 36, 36, 0.5); /* Light brown with 50% transparency */
+}
+
+.vision_header {
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(206, 192, 192);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vision_sub2 {
+  text-align: center;
+  color: azure;
+  display: flex;
+  justify-content: center;
+ 
+  align-items: center; /* Center vertically */
+}
+
+.vision_subheader {
+  text-align: center;
+  color: azure;
+  display: flex;
+  justify-content: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  align-items: center; /* Center vertically */
+}
+.custom_button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: antiquewhite;
+  background: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.custom_button button {
+  background: var(--color-golden); /* Add a golden background color */
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px 20px; /* Adjust padding for spacing */
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+}
+
+.custom_button button:hover {
+  background: none; /* Change the background on hover */
+  color: var(--color-golden); /* Change the text color on hover */
+}
+
+

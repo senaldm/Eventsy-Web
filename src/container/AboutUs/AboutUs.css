@@ -1,0 +1,71 @@
+/* AboutUs.css */
+.app_aboutus_app_bg {
+    background-color: #2b2b2b;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .about_content {
+    background: linear-gradient(45deg, #2b2b2b, #1c1c1c); /* Background gradient */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .about_image {
+    max-width: 50%;
+    height: 50vh;
+    border-radius: 10px;
+  }
+  
+  .headtext_cormaortant {
+    font-size: 36px;
+    color: #c68e43; /* Gold color for the heading */
+    margin-bottom: 20px; /* Increase spacing below the heading */
+    text-align: left;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .headtext_cormaortant::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 3px;
+    background-color: #c68e43;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .p_opensan {
+    font-size: 18px;
+    text-align: left;
+    padding-left: 20px;
+    max-width: 70%;
+    margin-top: 20px;
+    line-height: 1.6; /* Increase line height for better readability */
+  }
+  
+  .p_opensan:first-child {
+    margin-top: 0; /* Remove the top margin for the first paragraph */
+  }
+  
+  .btn_primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #c68e43;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
