@@ -34,7 +34,8 @@ const Navbar = () => {
   return (
     <nav className="app_navbar" id="top">
       <div className="app_navbar-logo">
-        <img src={images.gericht} alt="app logo" />
+        <img src={images.logo} alt="app logo" />
+       <a href='/'>Eventsy</a>
       </div>
       <ul className="app_navbar-links">
         <li className="p_opensans">
