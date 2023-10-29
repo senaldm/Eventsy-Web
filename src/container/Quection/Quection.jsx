@@ -12,7 +12,7 @@ const Quection = () => {
       setLineTopPosition(50); // Reset line position when hiding the paragraph
     } else {
       setVisibleParagraph(index);
-      setLineTopPosition(200); // Adjust to the desired position when showing the paragraph
+      setLineTopPosition(225); // Adjust to the desired position when showing the paragraph
     }
   };
 
@@ -40,7 +40,7 @@ const Quection = () => {
           </h2>
           {visibleParagraph === 1 && (
             <div>
-              <p>
+              <p style={{width:'50%'}}>
                 Our winery produces craft wine. Bulk orders are possible, but lots cannot be large.
               </p>
             </div>
@@ -62,7 +62,7 @@ const Quection = () => {
           </h2>
           {visibleParagraph === 2 && (
             <div>
-              <p>
+              <p style={{width:'50%'}}>
                 Yes, we ship your orders to any state and city in the United States, as well as abroad.
               </p>
             </div>
@@ -78,7 +78,7 @@ const Quection = () => {
           </h2>
           {visibleParagraph === 3 && (
             <div>
-              <p>
+              <p style={{width:'50%'}}>
               Our winery offers wine-lovers more than 10 different varieties of wines with different aging periods.
               </p>
             </div>
@@ -94,7 +94,7 @@ const Quection = () => {
           </h2>
           {visibleParagraph === 4 && (
             <div>
-              <p>
+              <p style={{width:'50%'}}>
               Yes. Our winery experts will tell you more about the varieties and help you choose the best option for you.
               </p>
             </div>
