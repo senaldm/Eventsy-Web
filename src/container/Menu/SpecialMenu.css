@@ -11,7 +11,7 @@
 }
 
 .image {
-  width: 300px;
+  width: 100vw;
   height: 500px;
 }
 
@@ -80,7 +80,7 @@
   }
 
   .app_specialmenu-overlay img {
-    width: 100%;
+    width: 50%;
     height: auto;
     max-height: 300px;
   }
