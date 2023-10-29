@@ -45,7 +45,7 @@
     bottom: 0;
   }
   
-  .p_opensan {
+  .header {
     font-size: 18px;
     text-align: left;
     padding-left: 20px;
@@ -54,7 +54,7 @@
     line-height: 1.6; /* Increase line height for better readability */
   }
   
-  .p_opensan:first-child {
+  .header:first-child {
     margin-top: 0; /* Remove the top margin for the first paragraph */
   }
   

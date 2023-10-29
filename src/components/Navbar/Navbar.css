@@ -10,16 +10,15 @@
 }
 
 .app_navbar-logo {
-    display: inline-block;
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     color: antiquewhite;
 }
 
 .app_navbar-logo img {
-
-    height: 50px;
-    object-fit: contain;
+    width: 150px;
+    
 }
 
 /* Navbar.css */
