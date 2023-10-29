@@ -29,8 +29,7 @@ import ideas from '../assets/ideas.png';
 import planning from '../assets/planning.png';
 import tickethandle from '../assets/tickethandle.png';
 import connect from '../assets/connect.png';
-import about from '../assets/about.png';
-import Logo from '../assets/logonew.png';
+import about from '../assets/about.png'
 
 export default {
   bg,
@@ -64,5 +63,4 @@ export default {
   planning,
   connect,tickethandle,
   ideas,
-  Logo
 };
