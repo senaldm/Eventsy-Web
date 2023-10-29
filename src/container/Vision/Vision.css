@@ -1,4 +1,4 @@
-/* Modify the styles without changing positions */
+/* Original styles */
 
 .vision_container {
   background-image: url('../../assets/couple2.png');
@@ -22,7 +22,7 @@
   left: 0;
   width: 100vw;
   height: 150vh;
-  background: rgba(49, 36, 36, 0.5); /* Light brown with 50% transparency */
+  background: rgba(49, 36, 36, 0.5);
 }
 
 .vision_header {
@@ -40,8 +40,7 @@
   color: azure;
   display: flex;
   justify-content: center;
- 
-  align-items: center; /* Center vertically */
+  align-items: center;
 }
 
 .vision_subheader {
@@ -51,8 +50,9 @@
   justify-content: center;
   padding-left: 20%;
   padding-right: 20%;
-  align-items: center; /* Center vertically */
+  align-items: center;
 }
+
 .custom_button {
   margin-top: 1rem;
   padding: 10px 20px;
@@ -67,20 +67,42 @@
 }
 
 .custom_button button {
-  background: var(--color-golden); /* Add a golden background color */
+  background: var(--color-golden);
   border: none;
   border-radius: 4px;
   font-size: 20px;
   cursor: pointer;
-  padding: 10px 20px; /* Adjust padding for spacing */
+  padding: 10px 20px;
   text-decoration: none;
   display: inline-block;
   color: white;
 }
 
 .custom_button button:hover {
-  background: none; /* Change the background on hover */
-  color: var(--color-golden); /* Change the text color on hover */
+  background: none;
+  color: var(--color-golden);
 }
 
+/* Responsive adjustments for mobile screens */
+@media (max-width: 767px) {
+  .vision_header {
+    font-size: 30px; /* Reduce text size for mobile screens */
+  }
 
+  .vision_sub2,
+  .vision_subheader {
+    font-size: 16px;
+    justify-content: center;
+    text-align: center; /* Reduce text size for mobile screens */
+  }
+
+  .custom_button {
+    text-align: center; /* Center align the button text */
+  }
+
+  .custom_button button {
+    margin: 1rem auto; /* Center align the button horizontally */
+    font-size: 16px; 
+    align-items: center;/* Reduce button text size for mobile screens */
+  }
+}
