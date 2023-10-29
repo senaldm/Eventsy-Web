@@ -14,7 +14,7 @@ const AboutUs = () => (
         <p className='header'>
           Our mission is to bring your ideas to life and ensure that every detail of your event is meticulously planned and executed. Let us turn your vision into a reality and make your event an extraordinary one.
         </p>
-        <a href='#contact' className='btn_primary'>Contact Us</a>
+        
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@ const Vision = () => (
   <div className='vision_container'>
     <div className='vision_wrapper'>
       <div className='vision_header'>
-        <h1 style={{color:'rgb(73, 52, 52)'}}>Our Vision</h1>
+        <h1 style={{color:'white'}}>Our Vision</h1>
       </div>
       <div className='vision_sub2'>
         <h2>One place for Everything</h2>
@@ -24,7 +24,7 @@ const Vision = () => (
         </p>
       </div>
       <div className='custom_button'>
-        <button type='button' onClick={{}}>Learn More</button>
+        <button type='button' style={{background:'none',color:'white'}} onClick={{}}>Learn More</button>
       </div>
     </div>
   </div>
