@@ -14,7 +14,7 @@ const App = () => (
       </div>
       <Vision />
     <Services />
-    <div style={{backgroundColor:'rgb(65, 43, 21)'}}>
+    <div style={{backgroundColor: ' #1c1c1c'}}>
     <Quection/>
     <MainServices/>
     </div>

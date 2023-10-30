@@ -20,9 +20,6 @@ const Header = () => {
           <p className="p_opensans" style={{ margin: '2rem 0', textAlign: 'center' }}>
             Good planning makes your day special.
           </p>
-          <button className="custom_button" onClick={scrollToMainService}>
-            Learn More
-          </button>
         </div>
       </div>
     </div>

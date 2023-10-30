@@ -14,9 +14,12 @@
 /* ... rest of your CSS */
 
 
+
+
 .menu-item {
   background-color: #643c3c; /* Set the background color for each menu item */
   border-radius: 10px;
+
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -27,6 +30,11 @@
 
 .menu-item-image-container {
   position: relative;
+
+  width:350px;
+  height: 450px;
+  object-fit: contain;
+
  
 }
 
@@ -37,8 +45,10 @@
   position: absolute;
   top: 70%; /* Position text in the center of the image */
   left: 50%;
+
   transform: translate(-50%, -50%); /* Center align text */
   background-color: rgba(122, 119, 119, 0.7); /* Add a semi-transparent background for text */
+
   padding: 10px;
   width: 60%;
   height: 50%; /* Set the width for text overlay */
@@ -47,7 +57,10 @@
 .menu-item-header {
   font-size: 24px; /* Set the font size for the header */
   margin: 10px 20px;
+
+  color: white;
   font-family: 'Courier New', Courier, monospace;
+
 }
 
 .menu-item-subheader {
