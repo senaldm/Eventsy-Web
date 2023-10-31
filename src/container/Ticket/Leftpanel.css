@@ -1,0 +1,31 @@
+/* Leftpanel.css */
+
+.left-panel {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Text color */
+    width: 200px; 
+    height: 95vh;
+    margin-top: 1px;
+    border-radius: 5px;/* Adjust the width as needed */
+  }
+  
+  .panel-item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-top: 20%;
+    padding-left: 5%;
+  }
+  
+  .panel-item i {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .panel-item:hover {
+    background-color: #555; /* Hover background color */
+    transition: background-color 0.3s;
+  }
+  

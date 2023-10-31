@@ -1,0 +1,30 @@
+/* src/components/HomeScreen.css */
+.ticket-home-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ticket-content {
+    display: flex;
+    flex-direction: row;
+  }
+    
+  .main-content {
+    flex: 1;
+  }
+  
+  /* Ensure that the Navbar and Leftpanel stay above each other */
+  .ticket-content .main-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Adjust the Navbar and Leftpanel width as needed */
+  .ticket-content .main-content .ticket-page-navbar {
+    /* Adjust width as needed */
+  }
+  
+  .ticket-content .main-content .left-panel {
+    /* Adjust width as needed */
+  }
+  

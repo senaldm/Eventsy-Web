@@ -98,5 +98,26 @@
 .close-button:hover {
   background-color: rgba(200, 200, 200, 0.8);
 }
+/* Inside LoginScreen.css */
+
+.google-button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.google-button:hover {
+  background-color: #357ae8;
+}
+
+.google-button .google-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
 
 /* Add any other styles you need */

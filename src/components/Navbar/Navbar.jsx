@@ -4,7 +4,10 @@ import { MdOutlineRestaurantMenu } from 'react-icons/md';
 import images from '../../constants/images';
 import LoginPopup from '../../container/Log/LoginScreen'
 import SignUpPopUp from '../../container/SignUp/SignUpScreen';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
+
+
 const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -38,9 +41,10 @@ const Navbar = () => {
        
       </div>
       <ul className="app_navbar-links">
-        <li className="p_opensans">
-          <a href="#tickets">Tickets</a>
-        </li>
+      <li className="p_opensans">
+      <a href="./ticket">Tickets</a>
+  </li>
+
         <li className="p_opensans">
           <a href="#invitations">Invitations</a>
         </li>
@@ -84,7 +88,7 @@ const Navbar = () => {
             />
             <ul className="app_navbar-smallscreen-links">
               <li className="p_opensans">
-                <a href="#tickets">Tickets</a>
+               <Link for='/ticket'>Ticket </Link>
               </li>
               <li className="p_opensans">
                 <a href="#invitations">Invitations</a>

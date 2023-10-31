@@ -8,10 +8,10 @@ const AboutUs = () => (
       <img src={images.about} alt='Event Planner' className='about_image' />
       <div>
         <h1 className='headtext_cormaortant'>About Us</h1>
-        <p className='header'>
+        <p className='header1'>
           We are passionate about making your special moments truly memorable. With a team of dedicated event planners, we create unforgettable experiences for every occasion, from weddings and corporate events to parties and conferences.
         </p>
-        <p className='header'>
+        <p className='header1'>
           Our mission is to bring your ideas to life and ensure that every detail of your event is meticulously planned and executed. Let us turn your vision into a reality and make your event an extraordinary one.
         </p>
         
