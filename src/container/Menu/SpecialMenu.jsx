@@ -32,9 +32,13 @@ const SpecialMenu = () => (
       {menuItems.map((item, index) => (
         <div key={index} className='menu-item'>
           <div className='menu-item-image-container'>
+
             <img src={item.imgSrc} alt={item.alt}  style={{width:'350px',height:'450px'}}/>
             <div className='menu-item-text'>
               <h2 className='menu-item-header' style={{width:'100%',paddingRight:'25px'}}>{item.header}</h2>
+
+          
+
               <p className='menu-item-subheader'>{item.subheader}</p>
             </div>
           </div>

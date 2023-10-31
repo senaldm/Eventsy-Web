@@ -28,6 +28,8 @@
 .vision_header {
   text-align: center;
   font-size: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(73, 52, 52);
 
   display: flex;
   justify-content: center;
