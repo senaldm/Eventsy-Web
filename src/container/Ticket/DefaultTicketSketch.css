@@ -1,0 +1,123 @@
+/* Updated CSS */
+.Main-back {
+  width: 100vw;
+  height: 30vw;
+}
+.selected-image {
+  max-height: 100%;
+  width: auto;
+}
+
+.ticket-main-border {
+  height: 50vh;
+  width: 67vw;
+  background-color: rgb(97, 95, 93);
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-second-border {
+  height: 45vh;
+  width: 64vw;
+  background-color: rgb(97, 95, 93);
+  border: 1px dashed black;
+  border-radius: 2px;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-third-border {
+  height: 40vh;
+  width: 61vw;
+  background-color: rgb(97, 95, 93);
+  border: 1px dashed black;
+  border-radius: 2px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ticket-main-content {
+  height: 35vh;
+  width: 40vw;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ticket-Qr-code {
+  height: 35vh;
+  width: 15vw;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 20px;
+}
+
+.image-uploader {
+  display: flex;
+  justify-content: center;
+  border: 2px solid rgb(190, 187, 187);
+  width: 10vw;
+  height: 7vh;
+  margin: 5px;
+  align-items: center;
+}
+
+.camera-icon {
+  font-size: 20px;
+  color: rgb(190, 187, 187);
+  margin: 2px;
+  cursor: pointer;
+}
+
+.selected-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.editable-text {
+  cursor: pointer;
+}
+
+.event-name,
+.event-description,
+.start-date,
+.end-date,
+.venue,
+.terms-and-conditions {
+  font-size: 12px;
+}
+
+.ticket-info p {
+  margin: 0;
+  font-size: 10px;
+  color: grey;
+}
+
+.ticket-info p button {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ticket-term-conditions {
+  margin-top: 25px;
+}
+
+.save-button {
+  display: flex;
+  justify-content: flex-end;
+}

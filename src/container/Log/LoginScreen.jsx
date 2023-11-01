@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginScreen.css';
+import { auth, provider } from './config';
+import { signInWithPopup } from 'firebase/auth';
 
 const LoginScreen = ({ closePopup }) => {
   const [username, setUsername] = useState('');
@@ -40,6 +42,20 @@ const LoginScreen = ({ closePopup }) => {
       // You can use the 'username' and 'password' state variables
     }
   };
+  const [value, setValue] = useState('');
+  const handleClick = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setValue(data.user.email);
+      localStorage.setItem("email", data.user.email);
+      closePopup();
+    })
+    .catch((error)=>{
+      console.error('Google Sign-In Error:',error);
+    })
+  }
+  useEffect(() => {
+    setValue(localStorage.getItem("email"))
+  })
 
   return (
     <div className="container" id="log">
@@ -76,10 +92,14 @@ const LoginScreen = ({ closePopup }) => {
           <button className="submit-button" type="submit">
             Login
           </button>
+        
         </form>
         <p>
           Don't have an account? <a href="#signup">Sign Up</a>
         </p>
+        <button className="google-button" onClick={handleClick}>
+            Sign in with Google
+          </button>
       </div>
     </div>
   );
