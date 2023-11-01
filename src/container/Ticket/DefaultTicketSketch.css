@@ -1,12 +1,14 @@
-/* Updated CSS */
 
 .Main-back {
   width: 100vw;
   height: 30vw;
 }
 .selected-image {
+
   max-height: 100vh;
   width: 100vw;
+  max-height: 100%;
+  width: auto;
 }
 
 .ticket-main-border {
@@ -47,7 +49,7 @@
 .ticket-main-content {
   height: 35vh;
   width: 40vw;
-  
+  background-color: antiquewhite;
   border-radius: 5px;
   margin: 4px;
   padding: 20px;
@@ -66,7 +68,6 @@
   padding: 20px;
 }
 
-/* ... Rest of the CSS ... */
 
 .image-uploader {
   display: flex;
