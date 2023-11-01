@@ -26,16 +26,18 @@ const DefaultTicketSketch = () => {
     setContentEditable(false);
   };
 
-  const ticketMainContentStyle = {
+  const ticketThirdBorderStyle = {
     backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
   };
+
 
   return (
     <div className="Main-back">
       <div className="ticket-main-border">
         <div className="ticket-second-border">
-          <div className="ticket-third-border">
-            <div className="ticket-main-content" style={ticketMainContentStyle}>
+          <div className="ticket-third-border" style={ticketThirdBorderStyle}>
+            <div className="ticket-main-content" style={{ backgroundColor: selectedImage ? 'transparent' : 'antiquewhite' }}>
+
               <div className="image-uploader">
                 <input
                   type="file"
