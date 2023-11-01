@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+
 import './TicketForm.css';
 
 const TicketForm = () => {
@@ -7,6 +11,11 @@ const TicketForm = () => {
   const [qrCodeSize, setQrCodeSize] = useState('');
   const [qrCodeLocation, setQrCodeLocation] = useState('bottom-left');
   const [numOfTickets, setNumOfTickets] = useState(1);
+  const [venue, setVenue] = useState('');
+  const [startEndDateTime, setStartEndDateTime] = useState({
+    start: null,
+    end: null,
+  });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleGenerateTicket = () => {
@@ -29,7 +38,45 @@ const TicketForm = () => {
             onChange={(e) => setEvent(e.target.value)}
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="venue">Event Venue</label>
+          <input
+            type="text"
+            id="venue"
+            value={venue}
+            onChange={(e) => setVenue(e.target.value)}
+          />
+        </div>
 
+        <div className="form-group">
+          <label htmlFor="startEndDateTime">Event Start Date & Time</label>
+          <DatePicker
+  selected={startEndDateTime.start}
+  onChange={(date) =>
+    setStartEndDateTime({ ...startEndDateTime, start: date })
+  }
+  showTimeSelect
+  timeFormat="HH:mm"
+  timeIntervals={15}
+  dateFormat="MMMM d, yyyy h:mm aa"
+  placeholderText="Select Start Date & Time"
+/>
+</div>
+<div className="form-group">
+<label htmlFor="startEndDateTime">Event End Date & Time</label>
+<DatePicker
+  selected={startEndDateTime.end}
+  onChange={(date) =>
+    setStartEndDateTime({ ...startEndDateTime, end: date })
+  }
+  showTimeSelect
+  timeFormat="HH:mm"
+  timeIntervals={15}
+  dateFormat="MMMM d, yyyy h:mm aa"
+  placeholderText="Select End Date & Time"
+/>
+
+        </div>
         <div className="form-group">
           <label htmlFor="ticketType">Ticket Type</label>
           <input
@@ -73,6 +120,8 @@ const TicketForm = () => {
           />
         </div>
 
+        
+
         <div className="button-group">
           <button type="button" onClick={handleGenerateTicket}>
             Generate Ticket
@@ -80,9 +129,6 @@ const TicketForm = () => {
           <button type="button">Cancel</button>
         </div>
       </form>
-      {formSubmitted && (
-        <i className="fas fa-check-circle"></i>
-      )}
     </div>
   );
 };

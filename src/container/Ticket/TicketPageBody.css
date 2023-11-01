@@ -1,18 +1,16 @@
 /* TicketPageBody.css */
 
+/* Common styles */
 .ticket-page-body {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    height: 100%;
-    width: 100%;
-    padding: 20px 10px;
-    overflow-y: auto; /* Add this line to make the page scrollable */
-  }
-  /* TicketPageBody.css */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  padding: 20px 10px;
+  overflow-y: auto;
+  height: 100vh; /* Add this line to make the page scrollable */
+}
 
-/* ... (previous styles) ... */
-
+/* Create Ticket section */
 .create-ticket {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -23,44 +21,82 @@
   overflow-y: auto; /* Add this line to make the "Create Ticket" section scrollable */
 }
 
-/* ... (remaining styles) ... */
+.create-ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .mainbodyheader {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .create-ticket, .design-ticket {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .create-ticket-header, .design-ticket-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .create-ticket-header span, .design-ticket-header span {
-    font-weight: bold;
-  }
-  
-  .create-ticket-header i, .design-ticket-header i {
-    cursor: pointer;
-    font-size: 24px;
-    color: #007bff; /* Blue color for icons */
-  }
-  
-  .ticket-form, .ticket-design {
-    display: none;
-    padding: 20px;
-    margin-top: 10px;
-  }
-  
-  /* Show ticket form when needed */
-  .create-ticket .ticket-form, .design-ticket .ticket-design {
-    display: block;
-  }
+.create-ticket-header span {
+  font-weight: bold;
+}
+
+.create-ticket-header i {
+  cursor: pointer;
+  font-size: 24px;
+  color: #007bff; /* Blue color for icons */
+}
+
+/* Design Ticket section */
+.design-ticket {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.design-ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.design-ticket-header span {
+  font-weight: bold;
+}
+
+/* Uploaded image container */
+.uploaded-image-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.uploaded-image-container img {
+  max-width: 5%; /* Reduce the image size to 5% of its original size */
+  max-height: 5%; /* Reduce the image size to 5% of its original size */
+  margin-right: 10px; /* Provide some spacing between the image and buttons */
+}
+
+.uploaded-image-container button {
+  background-color: #dc3545; /* Choose a color for the delete button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Upload Own Image and Default Ticket buttons */
+.buttons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.upload-own-button,
+.default-ticket-button {
+  background-color: #007bff; /* Choose a color for the buttons */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px; /* Add margin to separate the buttons */
+  width: 15%;
+  text-align: center;
+}
+
+.upload-own-button span {
+  display: block;
+}
