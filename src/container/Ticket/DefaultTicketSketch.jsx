@@ -47,6 +47,7 @@ const DefaultTicketSketch = ({ formData }) => {
     setContentEditable(false);
   };
 
+
   const ticketBorderStyle = {
     backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
   };
@@ -69,11 +70,18 @@ const DefaultTicketSketch = ({ formData }) => {
     console.log(ticketData);
   };
 
+  const ticketThirdBorderStyle = {
+    backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
+  };
+
+
+
   return (
     <div className="Main-back">
         <div className="ticket-main-border" style={{ backgroundColor: backgroundColor }} onClick={handleToggleColorPicker}>
           <div className="ticket-second-border" style={ticketBorderStyle}>
             <div className="ticket-main-content" style={{ backgroundColor: selectedImage ? 'transparent' : 'antiquewhite' }}>
+
               <div className="image-uploader">
                 <input
                   type="file"
