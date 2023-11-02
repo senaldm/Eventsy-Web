@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
+import { ChromePicker } from 'react-color'; 
 import './DefaultTicketSketch.css';
 
-const DefaultTicketSketch = () => {
+const DefaultTicketSketch = ({ formData }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [contentEditable, setContentEditable] = useState(false);
-  const [EventName, setEventName] = useState('Demo');
-  const [eventDescription, setEventDescription] = useState('Add Event Description, tagline, or any other useful information');
-  const [startDate, setStartDate] = useState('Start Date and Time');
-  const [endDate, setEndDate] = useState('End Date and Time');
-  const [venue, setVenue] = useState('Venue');
-  const [termsAndConditions, setTermsAndConditions] = useState('Add important notes, Terms & Conditions, ticket transfer, and refund policy');
+  const [backgroundColor, setBackgroundColor] = useState(''); // State for background color
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [qrCodeSpaceColor, setQrCodeSpaceColor] = useState(''); 
+  const EventName = formData ? formData.event : 'Demo';
+  const eventDescription = 'Add Event Description, tagline, or any other useful information';
+  const startDate = formData ? formData.startEndDateTime.start : 'Start Date and Time';
+  const endDate = formData ? formData.startEndDateTime.end : 'End Date and Time';
+  const venue = formData ? formData.venue : 'Venue';
+  const termsAndConditions = 'Add important notes, Terms & Conditions, ticket transfer, and refund policy';
+  const formattedStartDate = startDate instanceof Date ? startDate.toLocaleString() : startDate;
+  const formattedEndDate = endDate instanceof Date ? endDate.toLocaleString() : endDate;
+  // State for QR code space color
+  const [ticketData, setTicketData] = useState({
+    selectedImage: null,
+    contentEditable: false,
+    EventName: formData ? formData.event : 'Demo',
+    eventDescription: 'Add Event Description, tagline, or any other useful information',
+    startDate: formData ? formData.startEndDateTime.start : 'Start Date and Time',
+    endDate: formData ? formData.startEndDateTime.end : 'End Date and Time',
+    venue: formData ? formData.venue : 'Venue',
+    termsAndConditions: 'Add important notes, Terms & Conditions, ticket transfer, and refund policy',
+    formattedStartDate: '',
+    formattedEndDate: '',
+    backgroundColor: '',
+    qrCodeSpaceColor: '',
+  });
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -26,16 +47,39 @@ const DefaultTicketSketch = () => {
     setContentEditable(false);
   };
 
+
+  const ticketBorderStyle = {
+    backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
+  };
+
+  const handleToggleColorPicker = () => {
+    setShowColorPicker(!showColorPicker);
+  };
+
+  const handleColorChange = (color) => {
+    setBackgroundColor(color.hex);
+  };
+
+  const handleQrCodeSpaceColorChange = (color) => {
+    setQrCodeSpaceColor(color.hex);
+  };
+  
+  const handleSave = () => {
+    // Here, you can send the ticketData to a server or store it locally
+    // For demonstration, we'll log it to the console
+    console.log(ticketData);
+  };
+
   const ticketThirdBorderStyle = {
     backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
   };
 
 
+
   return (
     <div className="Main-back">
-      <div className="ticket-main-border">
-        <div className="ticket-second-border">
-          <div className="ticket-third-border" style={ticketThirdBorderStyle}>
+        <div className="ticket-main-border" style={{ backgroundColor: backgroundColor }} onClick={handleToggleColorPicker}>
+          <div className="ticket-second-border" style={ticketBorderStyle}>
             <div className="ticket-main-content" style={{ backgroundColor: selectedImage ? 'transparent' : 'antiquewhite' }}>
 
               <div className="image-uploader">
@@ -78,7 +122,7 @@ const DefaultTicketSketch = () => {
                       className="editable-text start-date"
                       style={{ fontSize: '17px' }}
                     >
-                      {startDate}
+                      {formattedStartDate}
                     </span>
                     <i className="fa fa-pencil" aria-hidden="true" onClick={() => handleContentEdit('startDate')}></i>
                     <span> | </span>
@@ -87,7 +131,7 @@ const DefaultTicketSketch = () => {
                       className="editable-text end-date"
                       style={{ fontSize: '17px' }}
                     >
-                      {endDate}
+                      {formattedEndDate}
                     </span>
                     <i className="fa fa-pencil" aria-hidden="true" onClick={() => handleContentEdit('endDate')}></i>
                   </div>
@@ -116,17 +160,28 @@ const DefaultTicketSketch = () => {
                       onClick={() => handleContentEdit('termsAndConditions')}
                     ></i>
                   </p>
-                  {contentEditable === 'termsAndConditions' && (
-                    <div className="save-button">
-                      <button onClick={handleContentSave}>Save</button>
-                    </div>
-                  )}
+                 
                 </div>
               </div>
             </div>
-            <div className="ticket-Qr-code">{/* Add content for QR code section */}</div>
+            <div className="ticket-Qr-code" style={{ backgroundColor: qrCodeSpaceColor }} onClick={handleToggleColorPicker}>
+              {/* Add content for QR code section */}
+            </div>
           </div>
+          {showColorPicker && (
+            <div className="color-picker">
+              <ChromePicker color={backgroundColor} onChange={handleColorChange} />
+            </div>
+          )}
+          {showColorPicker && (
+            <div className="qr-code-color-picker">
+              <ChromePicker color={qrCodeSpaceColor} onChange={handleQrCodeSpaceColorChange} />
+            </div>
+          )}
         </div>
+      <div style={{margin:'30px'}}>
+        <button style={{marginRight:'30px'}} onClick={handleSave}>Confirm</button>
+        <button>Cancel</button>
       </div>
     </div>
   );

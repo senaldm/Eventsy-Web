@@ -1,6 +1,6 @@
 
 .Main-back {
-  width: 100vw;
+  width: auto;
   height: 30vw;
 }
 .selected-image {
@@ -11,17 +11,9 @@
   width: auto;
 }
 
-.ticket-main-border {
-  height: 50vh;
-  width: 67vw;
-  background-color: rgb(97, 95, 93);
-  margin: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.ticket-second-border {
+
+.ticket-main-border {
   height: 45vh;
   width: 64vw;
   background-color: rgb(97, 95, 93);
@@ -33,7 +25,7 @@
   justify-content: center;
 }
 
-.ticket-third-border {
+.ticket-second-border {
   height: 40vh;
   width: 61vw;
   background-color: rgb(97, 95, 93);

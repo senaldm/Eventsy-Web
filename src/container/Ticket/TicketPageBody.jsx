@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './TicketPageBody.css';
 import 'font-awesome/css/font-awesome.min.css';
 import TicketForm from './TicketForm';
-import DefaultTicketSketch from './DefaultTicketSketch'; // Import the DefaultTicketSketch component
+import DefaultTicketSketch from './DefaultTicketSketch';
+import GenerateQRcodeForm from './GenerateQRcodeForm'; // Import the QR code form
 
 const TicketPageBody = () => {
   const [showCreateTicketForm, setShowCreateTicketForm] = useState(false);
@@ -13,18 +14,54 @@ const TicketPageBody = () => {
   const [showDefaultTicket, setShowDefaultTicket] = useState(true);
   const [uploadedImage, setUploadedImage] = useState(null);
 
+  const [showEventDetailsButton, setShowEventDetailsButton] = useState(false);
+  const [isPlusIcon, setIsPlusIcon] = useState(true);
+  const [showEventDetailsForm, setShowEventDetailsForm] = useState(false);
+
+  const [showQRCodeForm, setShowQRCodeForm] = useState(false); // New state for QR code form
+  const [isPlusIconQR, setIsPlusIconQR] = useState(true);
+  const [showDoneButton, setshowDoneButton] = useState(false);
+  const [showcancelButton, setshowcancelButton] = useState(false);
+
+  const [formData, setFormData] = useState(null);
+  const handleFormSubmit = (formData) => {
+    // Set the form data to local state
+    setFormData(formData);
+  };
   const toggleCreateTicketForm = () => {
-    setShowCreateTicketForm(!showCreateTicketForm);
-    setShowDesignTicket(false);
-    setEditIcon(false);
-    setShowCheckIcon(false);
+    if (showCreateTicketForm) {
+      setShowCreateTicketForm(false);
+      setShowDesignTicket(false);
+      setShowEventDetailsButton(false);
+      setEditIcon(false);
+      setShowCheckIcon(false);
+      setIsPlusIcon(true);
+      setshowDoneButton(false);
+      setshowcancelButton(false);
+    } else {
+      setShowCreateTicketForm(false);
+      setShowDesignTicket(true);
+      setShowEventDetailsButton(true);
+      setEditIcon(false);
+      setShowCheckIcon(false);
+      setIsPlusIcon(false);
+      setshowDoneButton(true);
+      setshowcancelButton(true);
+    }
+  };
+
+  const toggleCreateTicketForm2 = () => {
+    if (showCreateTicketForm) {
+      setShowCreateTicketForm(false);
+      setIsPlusIcon(true);
+    } else {
+      setShowCreateTicketForm(true);
+      setShowDesignTicket(true);
+    }
   };
 
   const toggleDesignTicket = () => {
     setShowDesignTicket(!showDesignTicket);
-    setShowCreateTicketForm(false);
-    setEditIcon(false);
-    setShowCheckIcon(false);
   };
 
   const toggleEditIcon = () => {
@@ -32,12 +69,7 @@ const TicketPageBody = () => {
   };
 
   const handleGenerateTicket = () => {
-    // Implement ticket generation logic here
-
-    // Set editIcon to true to change the icon to the edit icon
     setEditIcon(true);
-
-    // Hide the form and show the check icon
     setShowCreateTicketForm(false);
     setShowCheckIcon(true);
   };
@@ -63,68 +95,98 @@ const TicketPageBody = () => {
     setShowDefaultTicketSketch(!showDefaultTicketSketch);
   };
 
+  const toggleEventDetailsForm = () => {
+    setShowEventDetailsForm(!showEventDetailsForm);
+  };
+
+  const toggleQRCodeForm = () => {
+    setShowQRCodeForm(!showQRCodeForm);
+    setIsPlusIconQR(!isPlusIconQR);
+  };
+
   return (
     <div className="ticket-page-body">
       <h2 className="mainbodyheader">Create Ticket</h2>
       <div className="create-ticket">
         <div className="create-ticket-header">
           <span>Create Ticket</span>
-          {showCheckIcon ? (
-            <i className="fas fa-check-circle" aria-hidden="true"></i>
-          ) : editIcon ? (
-            <i className="fas fa-pencil-alt" onClick={toggleCreateTicketForm}></i>
-          ) : (
-            <i className="fa fa-plus-circle" onClick={toggleCreateTicketForm}></i>
-          )}
+          <i
+            className={isPlusIcon ? 'fa fa-plus-circle' : 'fa fa-minus-circle'}
+            onClick={toggleCreateTicketForm}
+          ></i>
         </div>
+        {showEventDetailsButton && (
+          <button type='button' onClick={toggleCreateTicketForm2} style={{ backgroundColor: 'blue', margin: '40px' }}>
+            Event Details
+          </button>
+        )}
+        {showEventDetailsForm && (
+          <div className="event-details-form">
+            {/* Your event details form components here */}
+          </div>
+        )}
         {showCreateTicketForm && !editIcon && (
           <div className="popup-form">
             <div className="popup-form-content">
               <div className="scrollable-content">
-                <TicketForm handleGenerateTicket={handleGenerateTicket} />
+                <TicketForm handleGenerateTicket={handleGenerateTicket} onFormSubmit={handleFormSubmit}/>
               </div>
             </div>
           </div>
         )}
+        {showDesignTicket && !editIcon && (
+          <div className="design-ticket">
+            <div className="design-ticket-header">
+              <span>Design Ticket</span>
+            </div>
+            <div className="image-upload-section">
+              {uploadedImage && (
+                <div className="uploaded-image-container">
+                  <img src={uploadedImage} alt="Uploaded Ticket" />
+                  <i
+                    className="fa fa-trash"
+                    aria-hidden="true"
+                    onClick={handleDeleteImage}
+                  ></i>
+                </div>
+        )}
+              <div className="buttons">
+                {!uploadedImage && showUploadOwn && (
+                  <label className="upload-own-button">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleUploadOwn}
+                      style={{ display: 'none' }}
+                    />
+                    <span className="upload-own-image-button" style={{fontFamily:'cursive'}}>Upload Own Image</span>
+                  </label>
+        )}
+                {showDefaultTicket && (
+                  <button className="default-ticket-button" onClick={toggleDefaultTicketSketch} style={{fontFamily:'cursive'}}>
+                    Default Ticket
+                  </button>
+        )}
+              </div>
+              {showDefaultTicketSketch && <DefaultTicketSketch formData={formData} />
+                 
+                }
+           
+            </div>
+           
+          </div>
+        )}
+          
+      </div>
+      <div className='main-Qr'>
+        <div className="generate-Qr-header">
+          <span>Generate QR code </span>
+          <button type='button' onClick={toggleQRCodeForm}>Generate QR code</button>
+        </div>
+        {showQRCodeForm && <GenerateQRcodeForm />}
       </div>
 
-      <h2>Design Ticket</h2>
-      <div className="design-ticket">
-        <div className="design-ticket-header">
-          <span>Design Ticket</span>
-        </div>
-        <div className="image-upload-section">
-          {uploadedImage && (
-            <div className="uploaded-image-container">
-              <img src={uploadedImage} alt="Uploaded Ticket" />
-              <i
-                className="fa fa-trash"
-                aria-hidden="true"
-                onClick={handleDeleteImage}
-              ></i>
-            </div>
-          )}
-          <div className="buttons">
-            {!uploadedImage && showUploadOwn && (
-              <label className="upload-own-button">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleUploadOwn}
-                  style={{ display: 'none' }}
-                />
-                <span className="upload-own-image-button">Upload Own Image</span>
-              </label>
-            )}
-            {showDefaultTicket && (
-              <button className="default-ticket-button" onClick={toggleDefaultTicketSketch}>
-                Default Ticket
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-      {showDefaultTicketSketch && <DefaultTicketSketch />}
+      <button type='button'> Show the Generated Ticket</button>
     </div>
   );
 };
