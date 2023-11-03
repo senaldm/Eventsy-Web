@@ -44,6 +44,7 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
+  overflow-x: auto;
 }
 
 .design-ticket-header {
@@ -123,4 +124,14 @@
   cursor: pointer;
   font-size: 24px;
   color: #007bff; /* Blue color for icons */
+}
+/* Add this to your TicketPageBody.css */
+
+.popup-form {
+  
+}
+
+.popup-form-content {
+  /* Your styles for the content inside the popup */
+ 
 }

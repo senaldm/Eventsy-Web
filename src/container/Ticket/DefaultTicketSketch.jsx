@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useRef ,useEffect} from 'react';
 import { ChromePicker } from 'react-color'; 
 import './DefaultTicketSketch.css';
+import html2canvas from 'html2canvas';
 
 const DefaultTicketSketch = ({ formData }) => {
+  const mainRef = useRef();
   const [selectedImage, setSelectedImage] = useState(null);
   const [contentEditable, setContentEditable] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(''); // State for background color
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [qrCodeSpaceColor, setQrCodeSpaceColor] = useState(''); 
+  const [showSketch, setShowSketch] = useState(true);
+  const [showbutton, setshowbutton] = useState(true);
   const EventName = formData ? formData.event : 'Demo';
-  const eventDescription = 'Add Event Description, tagline, or any other useful information';
+  const eventDescription = formData ?formData.eventDescription:'Add Event Description, tagline, or any other useful information';
   const startDate = formData ? formData.startEndDateTime.start : 'Start Date and Time';
   const endDate = formData ? formData.startEndDateTime.end : 'End Date and Time';
   const venue = formData ? formData.venue : 'Venue';
-  const termsAndConditions = 'Add important notes, Terms & Conditions, ticket transfer, and refund policy';
+  const termsAndConditions = formData? formData.termsAndConditions:'Add important notes, Terms & Conditions, ticket transfer, and refund policy';
   const formattedStartDate = startDate instanceof Date ? startDate.toLocaleString() : startDate;
   const formattedEndDate = endDate instanceof Date ? endDate.toLocaleString() : endDate;
   // State for QR code space color
@@ -64,20 +68,53 @@ const DefaultTicketSketch = ({ formData }) => {
     setQrCodeSpaceColor(color.hex);
   };
   
-  const handleSave = () => {
-    // Here, you can send the ticketData to a server or store it locally
-    // For demonstration, we'll log it to the console
-    console.log(ticketData);
+  const [showSavedTicket, setShowSavedTicket] = useState(false);
+  const [savedData, setSavedData] = useState(null);
+  const [finalTicketImage, setFinalTicketImage] = useState(null);
+  const saveAndCaptureImage = () => {
+    const savedData = {
+      backgroundColor,
+      qrCodeSpaceColor,
+      selectedImage,
+      EventName,
+      eventDescription,
+      startDate,
+      endDate,
+      venue,
+      termsAndConditions,
+      formattedStartDate,
+      formattedEndDate,
+    };
+  
+    setTicketData(savedData);
+    setShowSavedTicket(true);
+    setShowSketch(false);
+    setshowbutton(false);
+  
+    // Wait for the next frame to make sure the finalTicket element is attached to the DOM
+    requestAnimationFrame(() => {
+      const finalTicket = document.querySelector('.ticket-main-border');
+      
+      if (finalTicket) {
+        html2canvas(finalTicket).then((canvas) => {
+          const image = canvas.toDataURL('image/png');
+          console.log('Captured image data:', image); // Add this line to log the image data
+          setFinalTicketImage(image);
+        });
+      } else {
+        console.error("The finalTicket element is not found in the DOM.");
+      }
+    });
+  };
+  
+  const resetFinalTicketImage = () => {
+    setFinalTicketImage(null);
   };
 
-  const ticketThirdBorderStyle = {
-    backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
-  };
-
-
-
+  
   return (
-    <div className="Main-back">
+    <div className="Main-back"   ref={mainRef}>
+        {showSketch && (
         <div className="ticket-main-border" style={{ backgroundColor: backgroundColor }} onClick={handleToggleColorPicker}>
           <div className="ticket-second-border" style={ticketBorderStyle}>
             <div className="ticket-main-content" style={{ backgroundColor: selectedImage ? 'transparent' : 'antiquewhite' }}>
@@ -164,11 +201,7 @@ const DefaultTicketSketch = ({ formData }) => {
                 </div>
               </div>
             </div>
-            <div className="ticket-Qr-code" style={{ backgroundColor: qrCodeSpaceColor }} onClick={handleToggleColorPicker}>
-              {/* Add content for QR code section */}
-            </div>
-          </div>
-          {showColorPicker && (
+            {showColorPicker && (
             <div className="color-picker">
               <ChromePicker color={backgroundColor} onChange={handleColorChange} />
             </div>
@@ -178,12 +211,31 @@ const DefaultTicketSketch = ({ formData }) => {
               <ChromePicker color={qrCodeSpaceColor} onChange={handleQrCodeSpaceColorChange} />
             </div>
           )}
+            <div className="ticket-Qr-code" style={{ backgroundColor: qrCodeSpaceColor }} onClick={handleToggleColorPicker}>
+              {/* Add content for QR code section */}
+            </div>
+          </div>
+         
         </div>
-      <div style={{margin:'30px'}}>
-        <button style={{marginRight:'30px'}} onClick={handleSave}>Confirm</button>
-        <button>Cancel</button>
-      </div>
+        )}
+        {(showbutton && !finalTicketImage) && (
+        <div style={{ margin: '30px' }}>
+          <button style={{ marginRight: '30px' }} onClick={saveAndCaptureImage}>
+            Confirm
+          </button>
+          <button onClick={resetFinalTicketImage}>Cancel</button>
+        </div>
+      )}
+
+{finalTicketImage && (
+  <div>
+    <img src={finalTicketImage} alt="Final Ticket" />
+    <button onClick={resetFinalTicketImage}>Go Back</button>
+  </div>
+)}
+
     </div>
+    
   );
 };
 
