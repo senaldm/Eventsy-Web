@@ -27,7 +27,12 @@ const TicketPageBody = () => {
   const handleFormSubmit = (formData) => {
     // Set the form data to local state
     setFormData(formData);
+    // Extract the saved default ticket image URL from the savedData object
+    if (formData && formData.savedData) {
+      setSavedDefaultTicketImageURL(formData.savedData.selectedImage);
+    }
   };
+  
   const toggleCreateTicketForm = () => {
     if (showCreateTicketForm) {
       setShowCreateTicketForm(false);
@@ -103,7 +108,16 @@ const TicketPageBody = () => {
     setShowQRCodeForm(!showQRCodeForm);
     setIsPlusIconQR(!isPlusIconQR);
   };
-
+  const [showSavedDefaultTicket, setShowSavedDefaultTicket] = useState(false); // New state for showing saved default ticket
+  const toggleSavedDefaultTicket = () => {
+    console.log('Toggling showSavedDefaultTicket');
+    setShowSavedDefaultTicket(!showSavedDefaultTicket);
+  };
+  const [savedDefaultTicketImageURL, setSavedDefaultTicketImageURL] = useState('');
+  const [showcreatepopup,setshowcreatepopup] =useState(false);
+  const closepopup = () =>{
+    setshowcreatepopup(false);
+  }
   return (
     <div className="ticket-page-body">
       <h2 className="mainbodyheader">Create Ticket</h2>
@@ -126,12 +140,12 @@ const TicketPageBody = () => {
           </div>
         )}
         {showCreateTicketForm && !editIcon && (
-          <div className="popup-form">
+          
             <div className="popup-form-content">
               <div className="scrollable-content">
-                <TicketForm handleGenerateTicket={handleGenerateTicket} onFormSubmit={handleFormSubmit}/>
+                <TicketForm handleGenerateTicket={handleGenerateTicket} onFormSubmit={handleFormSubmit} onClick={closepopup}/>
               </div>
-            </div>
+      
           </div>
         )}
         {showDesignTicket && !editIcon && (
@@ -166,11 +180,23 @@ const TicketPageBody = () => {
                   <button className="default-ticket-button" onClick={toggleDefaultTicketSketch} style={{fontFamily:'cursive'}}>
                     Default Ticket
                   </button>
+                  
+
         )}
+       <i className="fa fa-eye" aria-hidden="true" onClick={toggleSavedDefaultTicket}></i>
+       
               </div>
-              {showDefaultTicketSketch && <DefaultTicketSketch formData={formData} />
+              {showSavedDefaultTicket && (
+  <div>
+    <img src={savedDefaultTicketImageURL} alt="Saved Default Ticket" />
+  </div>
+)}
+
+
+             {showDefaultTicketSketch && <DefaultTicketSketch formData={formData} savedDefaultTicketImageURL={savedDefaultTicketImageURL} />}
+
                  
-                }
+                
            
             </div>
            
@@ -183,7 +209,13 @@ const TicketPageBody = () => {
           <span>Generate QR code </span>
           <button type='button' onClick={toggleQRCodeForm}>Generate QR code</button>
         </div>
-        {showQRCodeForm && <GenerateQRcodeForm />}
+        {showQRCodeForm && 
+         <div className="popup-form-content">
+         <div className="scrollable-content">
+          <GenerateQRcodeForm />
+          </div>
+          </div>
+          }
       </div>
 
       <button type='button'> Show the Generated Ticket</button>

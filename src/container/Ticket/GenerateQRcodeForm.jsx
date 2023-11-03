@@ -20,8 +20,11 @@ const GenerateQRcodeForm = () => {
     // Add your QR code generation logic here
     // You can access the form data in the formData state
   };
-
+  const [showForm, setShowForm] = useState(true);
+  
   return (
+    <div>
+      {showForm && (
     <div className="generate-qr-code-form">
       <h3>Generate QR Code</h3>
       <form>
@@ -95,9 +98,11 @@ const GenerateQRcodeForm = () => {
           <button type="button" onClick={handleGenerateQRCode}>
             Generate QR Code
           </button>
-          <button type="button">Cancel</button>
+          <button type="button" onClick={()=> {setShowForm(false)}}>Cancel</button>
         </div>
       </form>
+    </div>
+      )}
     </div>
   );
 };

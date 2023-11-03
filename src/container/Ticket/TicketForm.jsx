@@ -7,11 +7,14 @@ import './TicketForm.css';
 const TicketForm = ({onFormSubmit }) => {
   const [event, setEvent] = useState('');
   const [venue, setVenue] = useState('');
+  const [eventDescription,seteventDescription] = useState("");
+  const [termsAndConditions,settermsandConditions] =useState("");
   const [startEndDateTime, setStartEndDateTime] = useState({
     start: null,
     end: null,
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   // Function to handle form submission
   const handleSubmit = (e) => {
@@ -22,6 +25,8 @@ const TicketForm = ({onFormSubmit }) => {
       event,
       venue,
       startEndDateTime,
+      eventDescription,
+      termsAndConditions,
     };
     onFormSubmit(formData);
     // You can do further processing with formData, like sending it to an API, or saving it to local state or context.
@@ -31,6 +36,8 @@ const TicketForm = ({onFormSubmit }) => {
   };
 
   return (
+    <div>
+    {showForm && (
     <div className={`ticket-form ${formSubmitted ? 'hidden' : ''}`}>
       <h2 className='ticketheader'>Create Ticket</h2>
       <form onSubmit={handleSubmit}>
@@ -52,7 +59,7 @@ const TicketForm = ({onFormSubmit }) => {
             onChange={(e) => setVenue(e.target.value)}
           />
         </div>
-
+         
         <div className="form-group">
           <label htmlFor="startEndDateTime">Event Start Date & Time</label>
           <DatePicker
@@ -81,12 +88,31 @@ const TicketForm = ({onFormSubmit }) => {
             placeholderText="Select End Date & Time"
           />
         </div>
-
+        <div className="form-group">
+          <label htmlFor="eventdescription">Event Description</label>
+          <input
+            type="text"
+            id="eventdescription"
+            value={eventDescription}
+            onChange={(e) => seteventDescription(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="termsandconditions">Terms and Conditions</label>
+          <input
+            type="text"
+            id="termandconsditions"
+            value={termsAndConditions}
+            onChange={(e) => settermsandConditions(e.target.value)}
+          />
+        </div>
         <div className="button-group">
           <button type="submit">Create Ticket</button>
-          <button type="button">Cancel</button>
+          <button type="button" onClick={() => setShowForm(false)}>Cancel</button>
         </div>
       </form>
+    </div>
+    )};
     </div>
   );
 };

@@ -3,7 +3,6 @@
 .navbar {
     background-color: #333; /* Dark background color */
     color: #fff; /* Text color */
-  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,11 +12,15 @@
   .header {
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    justify-content: center;
   }
   
-  .navbar-left, .navbar-right {
+  .navbar-left {
     display: flex;
     align-items: center;
+    flex: 1; /* Add this line to make .navbar-left take up remaining space */
+    justify-content: center; /* Center the content horizontally */
   }
   
   .navbar-right a {
