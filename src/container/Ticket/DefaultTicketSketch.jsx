@@ -1,9 +1,10 @@
-import React, { useState,mainRef ,useEffect} from 'react';
+import React, { useState,useRef ,useEffect} from 'react';
 import { ChromePicker } from 'react-color'; 
 import './DefaultTicketSketch.css';
 import html2canvas from 'html2canvas';
 
 const DefaultTicketSketch = ({ formData }) => {
+  const mainRef = useRef();
   const [selectedImage, setSelectedImage] = useState(null);
   const [contentEditable, setContentEditable] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(''); // State for background color
