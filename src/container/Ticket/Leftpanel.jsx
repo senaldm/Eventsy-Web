@@ -16,6 +16,10 @@ const Leftpanel = () => (
     <i class="fa fa-home" aria-hidden="true"></i>
       <a href="/">Home</a>
     </div>
+    <div className='panel-item'>
+    <i class="fa fa-home" aria-hidden="true"></i>
+      <a href="/">Home</a>
+    </div>
   </div>
 );
 
