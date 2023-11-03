@@ -183,23 +183,15 @@ const TicketPageBody = () => {
                   
 
         )}
-       <i className="fa fa-eye" aria-hidden="true" onClick={toggleSavedDefaultTicket}></i>
-       
+  
               </div>
               {showSavedDefaultTicket && (
   <div>
     <img src={savedDefaultTicketImageURL} alt="Saved Default Ticket" />
   </div>
 )}
-
-
              {showDefaultTicketSketch && <DefaultTicketSketch formData={formData} savedDefaultTicketImageURL={savedDefaultTicketImageURL} />}
-
-                 
-                
-           
             </div>
-           
           </div>
         )}
           
@@ -210,6 +202,7 @@ const TicketPageBody = () => {
           <button type='button' onClick={toggleQRCodeForm}>Generate QR code</button>
         </div>
         {showQRCodeForm && 
+        
          <div className="popup-form-content">
          <div className="scrollable-content">
           <GenerateQRcodeForm />
