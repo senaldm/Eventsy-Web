@@ -130,7 +130,7 @@ const TicketPageBody = () => {
           ></i>
         </div>
         {showEventDetailsButton && (
-          <button type='button' onClick={toggleCreateTicketForm2} style={{ backgroundColor: 'blue', margin: '40px' }}>
+          <button type='button' onClick={toggleCreateTicketForm2} style={{margin: '40px' }}>
             Event Details
           </button>
         )}
