@@ -12,7 +12,6 @@
   align-items: center;
   display: flex;
   position: relative;
-  filter: grayscale(80%);
 }
 
 .vision_container::before {

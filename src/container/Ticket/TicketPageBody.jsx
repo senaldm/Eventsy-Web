@@ -4,6 +4,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import TicketForm from './TicketForm';
 import DefaultTicketSketch from './DefaultTicketSketch';
 import GenerateQRcodeForm from './GenerateQRcodeForm'; // Import the QR code form
+import axios from 'axios';
 
 const TicketPageBody = () => {
   const [showCreateTicketForm, setShowCreateTicketForm] = useState(false);
@@ -17,7 +18,7 @@ const TicketPageBody = () => {
   const [showEventDetailsButton, setShowEventDetailsButton] = useState(false);
   const [isPlusIcon, setIsPlusIcon] = useState(true);
   const [showEventDetailsForm, setShowEventDetailsForm] = useState(false);
-
+  const [showDefaultTicketButton,setshowDefaultTicketButton] =useState(false);
   const [showQRCodeForm, setShowQRCodeForm] = useState(false); // New state for QR code form
   const [isPlusIconQR, setIsPlusIconQR] = useState(true);
   const [showDoneButton, setshowDoneButton] = useState(false);
@@ -32,7 +33,7 @@ const TicketPageBody = () => {
       setSavedDefaultTicketImageURL(formData.savedData.selectedImage);
     }
   };
-  
+  const [showDefaultbutton,setshowDefaultbutton] =useState(false);
   const toggleCreateTicketForm = () => {
     if (showCreateTicketForm) {
       setShowCreateTicketForm(false);
@@ -43,15 +44,19 @@ const TicketPageBody = () => {
       setIsPlusIcon(true);
       setshowDoneButton(false);
       setshowcancelButton(false);
+      setshowDefaultTicketButton(false);
+      setshowDefaultbutton(false);
     } else {
       setShowCreateTicketForm(false);
       setShowDesignTicket(true);
       setShowEventDetailsButton(true);
+      setshowDefaultTicketButton(true);
       setEditIcon(false);
       setShowCheckIcon(false);
       setIsPlusIcon(false);
       setshowDoneButton(true);
       setshowcancelButton(true);
+      setshowDefaultbutton(true);
     }
   };
 
@@ -104,10 +109,7 @@ const TicketPageBody = () => {
     setShowEventDetailsForm(!showEventDetailsForm);
   };
 
-  const toggleQRCodeForm = () => {
-    setShowQRCodeForm(!showQRCodeForm);
-    setIsPlusIconQR(!isPlusIconQR);
-  };
+ 
   const [showSavedDefaultTicket, setShowSavedDefaultTicket] = useState(false); // New state for showing saved default ticket
   const toggleSavedDefaultTicket = () => {
     console.log('Toggling showSavedDefaultTicket');
@@ -118,27 +120,33 @@ const TicketPageBody = () => {
   const closepopup = () =>{
     setshowcreatepopup(false);
   }
+  
+  const [showCreateQRCodeButton, setShowCreateQRCodeButton] = useState(false);
+  // Add a button in your component that calls handleShowGeneratedTicket when clicked
+  const toggleQRCodeForm = () => {
+    setShowQRCodeForm(false);
+    setIsPlusIconQR(!isPlusIconQR);
+
+    // Toggle the visibility of the "Create QR code" button
+    setShowCreateQRCodeButton(!showCreateQRCodeButton);
+  };
   return (
     <div className="ticket-page-body">
       <h2 className="mainbodyheader">Create Ticket</h2>
       <div className="create-ticket">
         <div className="create-ticket-header">
-          <span>Create Ticket</span>
+          <span>Create Default Ticket</span>
           <i
             className={isPlusIcon ? 'fa fa-plus-circle' : 'fa fa-minus-circle'}
             onClick={toggleCreateTicketForm}
           ></i>
         </div>
-        {showEventDetailsButton && (
-          <button type='button' onClick={toggleCreateTicketForm2} style={{margin: '40px' }}>
-            Event Details
+        {showDefaultTicketButton && (
+          <button type='button' onClick={toggleCreateTicketForm2} style={{margin: '40px',fontFamily:'cursive',color:'white',backgroundColor:'blue'}}>
+            Add Default Ticket Details
           </button>
         )}
-        {showEventDetailsForm && (
-          <div className="event-details-form">
-            {/* Your event details form components here */}
-          </div>
-        )}
+        
         {showCreateTicketForm && !editIcon && (
           
             <div className="popup-form-content">
@@ -148,10 +156,23 @@ const TicketPageBody = () => {
       
           </div>
         )}
+         {showDefaultTicket && showDefaultbutton &&(
+                  <button className="default-ticket-button" onClick={toggleDefaultTicketSketch} style={{fontFamily:'cursive'}}>
+                    Default Ticket
+                  </button>
+                  
+
+        )}
+         {showSavedDefaultTicket && (
+  <div>
+    <img src={savedDefaultTicketImageURL} alt="Saved Default Ticket" />
+  </div>
+)}
+             {showDefaultTicketSketch && <DefaultTicketSketch formData={formData} savedDefaultTicketImageURL={savedDefaultTicketImageURL} />}
         {showDesignTicket && !editIcon && (
           <div className="design-ticket">
             <div className="design-ticket-header">
-              <span>Design Ticket</span>
+              <span>Upload Own  Ticket</span>
             </div>
             <div className="image-upload-section">
               {uploadedImage && (
@@ -176,21 +197,10 @@ const TicketPageBody = () => {
                     <span className="upload-own-image-button" style={{fontFamily:'cursive'}}>Upload Own Image</span>
                   </label>
         )}
-                {showDefaultTicket && (
-                  <button className="default-ticket-button" onClick={toggleDefaultTicketSketch} style={{fontFamily:'cursive'}}>
-                    Default Ticket
-                  </button>
-                  
-
-        )}
+               
   
               </div>
-              {showSavedDefaultTicket && (
-  <div>
-    <img src={savedDefaultTicketImageURL} alt="Saved Default Ticket" />
-  </div>
-)}
-             {showDefaultTicketSketch && <DefaultTicketSketch formData={formData} savedDefaultTicketImageURL={savedDefaultTicketImageURL} />}
+             
             </div>
           </div>
         )}
@@ -199,8 +209,16 @@ const TicketPageBody = () => {
       <div className='main-Qr'>
         <div className="generate-Qr-header">
           <span>Generate QR code </span>
-          <button type='button' onClick={toggleQRCodeForm}>Generate QR code</button>
+          <i
+            className={isPlusIconQR ? 'fa fa-plus-circle' : 'fa fa-minus-circle'}
+            onClick={toggleQRCodeForm }
+          ></i>
         </div>
+        {showCreateQRCodeButton && (
+          <button type='button' onClick={() =>setShowQRCodeForm(true) }>
+            Create QR code
+          </button>
+        )}
         {showQRCodeForm && 
         
          <div className="popup-form-content">
@@ -211,7 +229,7 @@ const TicketPageBody = () => {
           }
       </div>
 
-      <button type='button'> Show the Generated Ticket</button>
+      <button type='button' onClick={{}}> Show the Generated Ticket</button>
     </div>
   );
 };

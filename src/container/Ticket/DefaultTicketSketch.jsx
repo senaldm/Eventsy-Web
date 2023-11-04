@@ -1,10 +1,10 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState ,useEffect, useRef} from 'react';
 import { ChromePicker } from 'react-color'; 
 import './DefaultTicketSketch.css';
 import html2canvas from 'html2canvas';
+import QRCode from 'qrcode.react'; 
 
-
-const DefaultTicketSketch = ({ formData }) => {
+const DefaultTicketSketch = ({ formData, dropdownValue}) => {
  
   const [selectedImage, setSelectedImage] = useState(null);
   const [textColor, setTextColor] = useState('#000000');
@@ -38,7 +38,13 @@ const DefaultTicketSketch = ({ formData }) => {
     backgroundColor: '',
     qrCodeSpaceColor: '',
   });
-
+  useEffect(() => {
+    if (formData) {
+      // You can set any other QR code options as needed
+      // Set position based on the dropdownValue prop
+      setQrCodeSpaceColor(dropdownValue);
+    }
+  }, [formData, dropdownValue]);
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -83,17 +89,25 @@ const DefaultTicketSketch = ({ formData }) => {
   
   const [showSavedTicket, setShowSavedTicket] = useState(false);
   const [savedData, setSavedData] = useState(null);
+  const [showCreateTicketForm, setShowCreateTicketForm] = useState(false);
   const [finalTicketImage, setFinalTicketImage] = useState(null);
   const handleCaptureImage = () => {
     // Remove icons and borders before capturing the screenshot
     const icons = document.querySelectorAll('.fa-camera, .fa-pencil');
     icons.forEach((icon) => icon.remove());
-
+  
     const borders = document.querySelectorAll('.ticket-main-border, .ticket-second-border','image-uploader');
     borders.forEach((border) => {
       border.style.border = 'none';
     });
-
+    if (qrCodeSpaceLocation === null) {
+      const qrCodeSpace = document.querySelector('.ticket-Qr-code');
+      const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = qrCodeSpace;
+      setQrCodeSpaceLocation({ left: offsetLeft, top: offsetTop, width: offsetWidth, height: offsetHeight });
+    }
+    // Render the QR code at the specified location
+      addQRCodeToLocation();
+    
     // Use html2canvas to capture a screenshot of the component
     html2canvas(document.querySelector('.ticket-main-border')).then((canvas) => {
       const capturedImage = canvas.toDataURL('image/png');
@@ -102,6 +116,37 @@ const DefaultTicketSketch = ({ formData }) => {
     setShowSketch(false);
   };
   
+ 
+  const [qrCodeSpaceLocation, setQrCodeSpaceLocation] = useState(null);
+  const addQRCodeToLocation = () => {
+    if (qrCodeSpaceLocation) {
+      const { left, top, width, height } = qrCodeSpaceLocation;
+      const qrCodeValue = dropdownValue; // Replace with your actual QR code value
+
+      // Calculate the size of the QR code based on the available space
+      const qrCodeSize = Math.min(width, height);
+
+      // Calculate the position to center the QR code within the space
+      const qrCodeLeft = left + (width - qrCodeSize) / 2;
+      const qrCodeTop = top + (height - qrCodeSize) / 2;
+
+      // Render the QR code component at the specified location
+      return (
+        <div
+          style={{
+            position: 'absolute',
+            left: qrCodeLeft + 'px',
+            top: qrCodeTop + 'px',
+          }}
+        >
+          <QRCode value={qrCodeValue} size={qrCodeSize} />
+        </div>
+      );
+    }
+
+    return null; // Return null if the QR code space location is not available
+  };
+
   return (
     <div className="Main-back"  >
         {showSketch && (
@@ -204,7 +249,7 @@ const DefaultTicketSketch = ({ formData }) => {
           )}
          
             <div className="ticket-Qr-code" style={{ backgroundColor: qrCodeSpaceColor }} onClick={handleToggleColorPicker}>
-              {/* Add content for QR code section */}
+            
             </div>
           </div>
          
@@ -224,14 +269,14 @@ const DefaultTicketSketch = ({ formData }) => {
           <button style={{ marginRight: '30px' }} onClick={handleCaptureImage}>
             Confirm
           </button>
-          <button >Cancel</button>
+          <button onClick={() => { setShowSketch(false); setshowbutton(false)}} >Cancel</button>
         </div>
       )}
      
          {finalTicketImage && (
         <div className="saved-ticket-container">
           <img src={finalTicketImage} alt="Saved Ticket" />
-          <button onClick={() => {setFinalTicketImage(false); setshowbutton(false)}}> Hide </button>
+          <button onClick={() => {setFinalTicketImage(false); setshowbutton(false); setShowCreateTicketForm(false)}}> Hide </button>
 
         </div>
       )}
