@@ -20,7 +20,6 @@ return (
     <i class="fa fa-home" aria-hidden="true"></i>
       <a href="/">Home</a>
     </div>
-   
   </div>
 );
 }
