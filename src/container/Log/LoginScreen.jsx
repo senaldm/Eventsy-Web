@@ -3,6 +3,7 @@ import './LoginScreen.css';
 import { auth, provider } from './config';
 import { signInWithPopup } from 'firebase/auth';
 
+
 const LoginScreen = ({ closePopup }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

@@ -71,7 +71,7 @@
 }
 
 .uploaded-image-container button {
-  background-color: #dc3545; /* Choose a color for the delete button */
+  background-color: #921c28; /* Choose a color for the delete button */
   color: white;
   border: none;
   border-radius: 5px;
@@ -87,7 +87,7 @@
 
 .upload-own-button,
 .default-ticket-button {
-  background-color: #007bff; /* Choose a color for the buttons */
+  background-color: #3375b6; /* Choose a color for the buttons */
   color: white;
   border: none;
   border-radius: 5px;
@@ -133,5 +133,5 @@
 
 .popup-form-content {
   /* Your styles for the content inside the popup */
- 
+  
 }

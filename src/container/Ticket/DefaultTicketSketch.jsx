@@ -1,11 +1,14 @@
-import React, { useState,useRef ,useEffect} from 'react';
+import React, { useState ,useEffect} from 'react';
 import { ChromePicker } from 'react-color'; 
 import './DefaultTicketSketch.css';
 import html2canvas from 'html2canvas';
 
+
 const DefaultTicketSketch = ({ formData }) => {
-  const mainRef = useRef();
+ 
   const [selectedImage, setSelectedImage] = useState(null);
+  const [textColor, setTextColor] = useState('#000000');
+  const [showTextColorPicker, setShowTextColorPicker] = useState(false);
   const [contentEditable, setContentEditable] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(''); // State for background color
   const [showColorPicker, setShowColorPicker] = useState(false);
@@ -54,14 +57,24 @@ const DefaultTicketSketch = ({ formData }) => {
 
   const ticketBorderStyle = {
     backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
+    color: textColor,
   };
-
+ 
   const handleToggleColorPicker = () => {
     setShowColorPicker(!showColorPicker);
   };
-
+  const handleToggleTextColorPicker = () => {
+    setShowTextColorPicker(!showTextColorPicker);
+  };
   const handleColorChange = (color) => {
-    setBackgroundColor(color.hex);
+    if (showColorPicker) {
+      setBackgroundColor(color.hex);
+    } else {
+      setTextColor(color.hex);
+    }
+  };
+  const handleTextColorChange = (color) => {
+    setTextColor(color.hex);
   };
 
   const handleQrCodeSpaceColorChange = (color) => {
@@ -71,49 +84,26 @@ const DefaultTicketSketch = ({ formData }) => {
   const [showSavedTicket, setShowSavedTicket] = useState(false);
   const [savedData, setSavedData] = useState(null);
   const [finalTicketImage, setFinalTicketImage] = useState(null);
-  const saveAndCaptureImage = () => {
-    const savedData = {
-      backgroundColor,
-      qrCodeSpaceColor,
-      selectedImage,
-      EventName,
-      eventDescription,
-      startDate,
-      endDate,
-      venue,
-      termsAndConditions,
-      formattedStartDate,
-      formattedEndDate,
-    };
-  
-    setTicketData(savedData);
-    setShowSavedTicket(true);
-    setShowSketch(false);
-    setshowbutton(false);
-  
-    // Wait for the next frame to make sure the finalTicket element is attached to the DOM
-    requestAnimationFrame(() => {
-      const finalTicket = document.querySelector('.ticket-main-border');
-      
-      if (finalTicket) {
-        html2canvas(finalTicket).then((canvas) => {
-          const image = canvas.toDataURL('image/png');
-          console.log('Captured image data:', image); // Add this line to log the image data
-          setFinalTicketImage(image);
-        });
-      } else {
-        console.error("The finalTicket element is not found in the DOM.");
-      }
-    });
-  };
-  
-  const resetFinalTicketImage = () => {
-    setFinalTicketImage(null);
-  };
+  const handleCaptureImage = () => {
+    // Remove icons and borders before capturing the screenshot
+    const icons = document.querySelectorAll('.fa-camera, .fa-pencil');
+    icons.forEach((icon) => icon.remove());
 
+    const borders = document.querySelectorAll('.ticket-main-border, .ticket-second-border','image-uploader');
+    borders.forEach((border) => {
+      border.style.border = 'none';
+    });
+
+    // Use html2canvas to capture a screenshot of the component
+    html2canvas(document.querySelector('.ticket-main-border')).then((canvas) => {
+      const capturedImage = canvas.toDataURL('image/png');
+      setFinalTicketImage(capturedImage);
+    });
+    setShowSketch(false);
+  };
   
   return (
-    <div className="Main-back"   ref={mainRef}>
+    <div className="Main-back"  >
         {showSketch && (
         <div className="ticket-main-border" style={{ backgroundColor: backgroundColor }} onClick={handleToggleColorPicker}>
           <div className="ticket-second-border" style={ticketBorderStyle}>
@@ -146,7 +136,7 @@ const DefaultTicketSketch = ({ formData }) => {
                   <span
                     contentEditable={contentEditable === 'eventDescription'}
                     className="editable-text event-description"
-                    style={{ fontSize: '', color: 'grey' }}
+                    style={{ fontSize: '',color: textColor === '#000000' ? 'grey' : textColor   }}
                   >
                     {eventDescription}
                   </span>
@@ -157,7 +147,7 @@ const DefaultTicketSketch = ({ formData }) => {
                     <span
                       contentEditable={contentEditable === 'startDate'}
                       className="editable-text start-date"
-                      style={{ fontSize: '17px' }}
+                      style={{ fontSize: '17px' , }}
                     >
                       {formattedStartDate}
                     </span>
@@ -188,6 +178,7 @@ const DefaultTicketSketch = ({ formData }) => {
                     <span
                       contentEditable={contentEditable === 'termsAndConditions'}
                       className="editable-text terms-and-conditions"
+                      style={{ color: textColor === '#000000' ? 'grey' : textColor }}
                     >
                       {termsAndConditions}
                     </span>
@@ -211,28 +202,39 @@ const DefaultTicketSketch = ({ formData }) => {
               <ChromePicker color={qrCodeSpaceColor} onChange={handleQrCodeSpaceColorChange} />
             </div>
           )}
+         
             <div className="ticket-Qr-code" style={{ backgroundColor: qrCodeSpaceColor }} onClick={handleToggleColorPicker}>
               {/* Add content for QR code section */}
             </div>
           </div>
          
         </div>
+        
         )}
-        {(showbutton && !finalTicketImage) && (
-        <div style={{ margin: '30px' }}>
-          <button style={{ marginRight: '30px' }} onClick={saveAndCaptureImage}>
-            Confirm
-          </button>
-          <button onClick={resetFinalTicketImage}>Cancel</button>
+         {showSketch && (
+        <div className="text-color-picker">
+          <button onClick={handleToggleTextColorPicker}>Change Text Color</button>
+          {showTextColorPicker && (
+            <ChromePicker color={textColor } onChange={handleTextColorChange} />
+          )}
         </div>
       )}
+        {(showbutton && !finalTicketImage ) && (
+        <div style={{ margin: '30px' }}>
+          <button style={{ marginRight: '30px' }} onClick={handleCaptureImage}>
+            Confirm
+          </button>
+          <button >Cancel</button>
+        </div>
+      )}
+     
+         {finalTicketImage && (
+        <div className="saved-ticket-container">
+          <img src={finalTicketImage} alt="Saved Ticket" />
+          <button onClick={() => {setFinalTicketImage(false); setshowbutton(false)}}> Hide </button>
 
-{finalTicketImage && (
-  <div>
-    <img src={finalTicketImage} alt="Final Ticket" />
-    <button onClick={resetFinalTicketImage}>Go Back</button>
-  </div>
-)}
+        </div>
+      )}
 
     </div>
     
