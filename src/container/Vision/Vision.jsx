@@ -25,11 +25,6 @@ const Vision = () => (
           unforgettable experiences.
         </p>
       </div>
-      <div className='custom_button'>
-
-        <button type='button' style={{background:'none',color:'white'}} onClick={{}}>Learn More</button>
-
-      </div>
     </div>
   </div>
 );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineRestaurantMenu } from 'react-icons/md';
 import images from '../../constants/images';
@@ -6,7 +6,7 @@ import LoginPopup from '../../container/Log/LoginScreen'
 import SignUpPopUp from '../../container/SignUp/SignUpScreen';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-
+import { auth } from '../../container/Log/config';
 
 const Navbar = () => {
   const scrollToSection = (sectionId) => {
@@ -34,6 +34,35 @@ const Navbar = () => {
   const closesignuppopup = () => {
     setShowSignupPopup(false);
   };
+  const [user, setUser] = useState(null); // To store the user's information
+
+  useEffect(() => {
+    // Add a Firebase Authentication observer to check the user's login status
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setUser(user);
+      } else {
+        // User is signed out.
+        setUser(null);
+      }
+    });
+
+    // Unsubscribe from the observer when the component unmounts
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = () => {
+    // Perform the logout action using Firebase Authentication
+    auth.signOut()
+      .then(() => {
+        // User has been logged out
+      })
+      .catch((error) => {
+        console.error('Logout error', error);
+      });
+  };
+
   return (
     <nav className="app_navbar" id="top">
       <div className="app_navbar-logo">
@@ -65,13 +94,23 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="app_navbar-login-signup">
-        <a href="#log" className="p_opensans" onClick={openLoginPopup}>
+        {user ? (
+          <>
+            <a href="#logout" className="p_opensans" onClick={handleLogout}>
+              Log Out
+            </a>
+          </>
+        ) : (
+          <>
+          <a href="#log" className="p_opensans" onClick={openLoginPopup}>
           Log In
         </a>
-        <div></div>
-        <a href="#signup" className="p_opensans" onClick={opensignupopup}>
+            <div></div>
+            <a href="#signup" className="p_opensans" onClick={opensignupopup}>
           Sign Up
         </a>
+          </>
+        )}
       </div>
       <div className="app_navbar-smallscreen">
         <GiHamburgerMenu

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './LoginScreen.css';
-import { auth, provider } from './config';
+import { auth, provider } from '../Log/config';
 import { signInWithPopup } from 'firebase/auth';
+import 'font-awesome/css/font-awesome.min.css';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 
 
 const LoginScreen = ({ closePopup }) => {
@@ -39,8 +42,13 @@ const LoginScreen = ({ closePopup }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Add your login logic here
-      // You can use the 'username' and 'password' state variables
+      signInWithEmailAndPassword(auth,username, password).then((userCredential) =>{
+        console.log(userCredential);
+        console.log('User Log in Succesfully');
+        closePopup();
+      }).catch((error) =>{
+        console.log(error);
+      })
     }
   };
   const [value, setValue] = useState('');
@@ -66,22 +74,23 @@ const LoginScreen = ({ closePopup }) => {
         </div>
         <h2 className="log">Login</h2>
         <form className="form" onSubmit={handleLogin}>
-          <div className="input-container">
+          <div className="input-container1">
             <label htmlFor="username"></label>
             <input
-              className={`input ${usernameError && 'error'}`}
+              className={`input1 ${usernameError && 'error'}`}
               type="text"
               id="username"
               placeholder="Enter your email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              style={{backgroundColor:'white'}}
             />
             <div className="error-message">{usernameError}</div>
           </div>
-          <div className="input-container">
+          <div className="input-container1">
             <label htmlFor="password"></label>
             <input
-              className={`input ${passwordError && 'error'}`}
+              className={`input1 ${passwordError && 'error'}`}
               type="password"
               id="password"
               placeholder="Enter your password"
@@ -90,16 +99,18 @@ const LoginScreen = ({ closePopup }) => {
             />
             <div className="error-message">{passwordError}</div>
           </div>
-          <button className="submit-button" type="submit">
+          <button className="submit-button" type="submit" style={{color:'white',backgroundColor:'blue'}}>
             Login
-          </button>
-        
+          </button>        
         </form>
         <p>
           Don't have an account? <a href="#signup">Sign Up</a>
         </p>
-        <button className="google-button" onClick={handleClick}>
-            Sign in with Google
+        <button className="google-button" onClick={handleClick} style={{color:'white',backgroundColor:'blue'}} >
+          <div className='circle2'>
+        <i class="fa fa-google" aria-hidden="true" style={{margin:'0 20px 0 20px',color:'black'}}></i> 
+        </div>
+        Sign in with Google
           </button>
       </div>
     </div>

@@ -128,10 +128,14 @@
 /* Add this to your TicketPageBody.css */
 
 .popup-form {
-  
+
 }
 
 .popup-form-content {
-  /* Your styles for the content inside the popup */
-  
+  display: flex;
+  top:0;
+  left: 0;
+  bottom:0;
+  overflow-y: auto;
+  justify-content: center;
 }

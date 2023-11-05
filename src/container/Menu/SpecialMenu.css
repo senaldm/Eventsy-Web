@@ -17,9 +17,9 @@
 
 
 .menu-item {
-  background-color: #643c3c; /* Set the background color for each menu item */
+ /* Set the background color for each menu item */
   border-radius: 10px;
-
+ background: none;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@
   left: 50%;
 
   transform: translate(-50%, -50%); /* Center align text */
-  background-color: rgba(122, 119, 119, 0.7); /* Add a semi-transparent background for text */
+  /* Add a semi-transparent background for text */
 
   padding: 10px;
   width: 60%;

@@ -1,6 +1,6 @@
 import AboutUs from './AboutUs/AboutUs';
 import Vision from './Vision/Vision';
-import FindUs from './Findus/FindUs';
+import FeedBack from './FeedBack/FeedBack';
 import Footer from './Footer/Footer';
 import Quection from './Quection/Quection';
 import Header from './Header/Header';
@@ -10,7 +10,7 @@ import MainServices from './MainServices/MainServices';
 export {
   AboutUs,
  Vision,
-  FindUs,
+  FeedBack,
   Footer,
   Quection,
   Header,
