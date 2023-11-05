@@ -3,7 +3,7 @@ import './GenerateQRcodeForm.css';
 import axios from 'axios';// Import Firebase// Import Firebase Authentication
 import { auth } from '../../container/Log/config';
 
-const GenerateQRcodeForm = () => {
+const GenerateQRcodeForm = (image) => {
   const [formData, setFormData] = useState({
     ticketType: '',
     qrCodeLocation: '',
@@ -15,45 +15,52 @@ const GenerateQRcodeForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleGenerateQRCode = async(e) => {
-    // Check if a user is logged in
-    e.preventDefault()
+  const handleGenerateQRCode = async (e) => {
+    e.preventDefault();
+  
+ 
+    const formDataToSend = new FormData();
+ 
+    formDataToSend.append('image', image);
+  
+   
+    formDataToSend.append('ticketType', formData.ticketType);
+    formDataToSend.append('qrCodeLocation', formData.qrCodeLocation);
+    formDataToSend.append('numberOfTickets', formData.numberOfTickets);
+  
+   
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-    
-      // User is logged in, retrieve their email
-      const userEmail = user.email;
-
-      // Include the user's email in the formData
-      const dataToSend = {
-        ...formData,
-        userEmail,
-      };
-
-      // Send the updated formData to the Laravel backend
-      axios
-      .post('https://nice-williams.34-81-183-3.plesk.page', dataToSend)
-      .then((response) => {
-        // Handle the response data here
-        console.log(response.data);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error(error);
-      });
+       
+        const userEmail = user.email;
+       
+        formDataToSend.append('userEmail', userEmail);
+        
+        axios
+          .post('https://nice-williams.34-81-183-3.plesk.page/qrcode', formDataToSend)
+          .then((response) => {
+        
+            console.log(response.data);
+          })
+          .catch((error) => {
+         
+            console.error(error);
+          });
   
-
-      unsubscribe();
-    }
-  })
+        unsubscribe();
+      }
+    });
   
+    setShowForm(false);
+    setShowCreateQRCodeButton(false);
   };
+  
 
   const [showForm, setShowForm] = useState(true);
-
+  const [showCreateQRCodeButton, setShowCreateQRCodeButton] = useState(false);
   return (
     <div>
-      {showForm && (
+      {showForm &&  (
         <div className="generate-qr-code-form">
           <h3>Generate QR Code</h3>
           <form>
@@ -99,7 +106,7 @@ const GenerateQRcodeForm = () => {
             </div>
 
             <div className="button-group">
-              <button type="button" onClick={handleGenerateQRCode}>
+              <button type="button" onClick={handleGenerateQRCode }>
                 Generate QR Code
               </button>
               <button type="button" onClick={() => setShowForm(false)}>

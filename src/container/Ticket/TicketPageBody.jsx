@@ -127,9 +127,33 @@ const TicketPageBody = () => {
     setShowQRCodeForm(false);
     setIsPlusIconQR(!isPlusIconQR);
 
-    // Toggle the visibility of the "Create QR code" button
+   
     setShowCreateQRCodeButton(!showCreateQRCodeButton);
   };
+ 
+ const [generatedTicketImage, setGeneratedTicketImage] = useState(null); 
+
+  const handleShowGeneratedTicket = () => {
+    
+    axios
+      .get('https://nice-williams.34-81-183-3.plesk.page/qrcode', {
+        responseType: 'arraybuffer', 
+      })
+      .then((response) => {
+      
+        const blob = new Blob([response.data], { type: 'image/jpeg' }); 
+       
+        const imageUrl = URL.createObjectURL(blob);
+
+        
+        setGeneratedTicketImage(imageUrl);
+      })
+      .catch((error) => {
+       
+        console.error(error);
+      });
+  };
+ 
   return (
     <div className="ticket-page-body">
       <h2 className="mainbodyheader">Create Ticket</h2>
@@ -223,13 +247,19 @@ const TicketPageBody = () => {
         
          <div className="popup-form-content">
          <div className="scrollable-content">
-          <GenerateQRcodeForm />
+         <GenerateQRcodeForm image={savedDefaultTicketImageURL || uploadedImage} />
           </div>
           </div>
           }
       </div>
 
-      <button type='button' onClick={{}}> Show the Generated Ticket</button>
+      <button type='button' onClick={handleShowGeneratedTicket}> Show the Generated Ticket</button>
+      {generatedTicketImage && (
+        <div>
+          <h4>Generated Ticket:</h4>
+          <img src={generatedTicketImage} alt="Generated Ticket" />
+        </div>
+      )}
     </div>
   );
 };
