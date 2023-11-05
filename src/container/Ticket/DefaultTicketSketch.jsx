@@ -2,7 +2,7 @@ import React, { useState ,useEffect, useRef} from 'react';
 import { ChromePicker } from 'react-color'; 
 import './DefaultTicketSketch.css';
 import html2canvas from 'html2canvas';
-import QRCode from 'qrcode.react'; 
+
 
 const DefaultTicketSketch = ({ formData, dropdownValue}) => {
  
@@ -106,7 +106,7 @@ const DefaultTicketSketch = ({ formData, dropdownValue}) => {
       setQrCodeSpaceLocation({ left: offsetLeft, top: offsetTop, width: offsetWidth, height: offsetHeight });
     }
     // Render the QR code at the specified location
-      addQRCodeToLocation();
+     
     
     // Use html2canvas to capture a screenshot of the component
     html2canvas(document.querySelector('.ticket-main-border')).then((canvas) => {
@@ -118,34 +118,9 @@ const DefaultTicketSketch = ({ formData, dropdownValue}) => {
   
  
   const [qrCodeSpaceLocation, setQrCodeSpaceLocation] = useState(null);
-  const addQRCodeToLocation = () => {
-    if (qrCodeSpaceLocation) {
-      const { left, top, width, height } = qrCodeSpaceLocation;
-      const qrCodeValue = dropdownValue; // Replace with your actual QR code value
 
-      // Calculate the size of the QR code based on the available space
-      const qrCodeSize = Math.min(width, height);
 
-      // Calculate the position to center the QR code within the space
-      const qrCodeLeft = left + (width - qrCodeSize) / 2;
-      const qrCodeTop = top + (height - qrCodeSize) / 2;
-
-      // Render the QR code component at the specified location
-      return (
-        <div
-          style={{
-            position: 'absolute',
-            left: qrCodeLeft + 'px',
-            top: qrCodeTop + 'px',
-          }}
-        >
-          <QRCode value={qrCodeValue} size={qrCodeSize} />
-        </div>
-      );
-    }
-
-    return null; // Return null if the QR code space location is not available
-  };
+  
 
   return (
     <div className="Main-back"  >

@@ -139,8 +139,7 @@ const TicketPageBody = () => {
       .get('https://nice-williams.34-81-183-3.plesk.page/qrcode', {
         responseType: 'arraybuffer', 
       })
-      .then((response) => {
-      
+      .then((response) => {     
         const blob = new Blob([response.data], { type: 'image/jpeg' }); 
        
         const imageUrl = URL.createObjectURL(blob);
