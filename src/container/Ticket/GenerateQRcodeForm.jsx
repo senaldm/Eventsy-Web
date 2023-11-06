@@ -31,7 +31,7 @@ const GenerateQRcodeForm = (image) => {
    
   
         axios
-          .post('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', formDataToSend)
+          .post('https://dreamy-wilson.34-81-183-3.plesk.page/', formDataToSend)
           .then((response) => {
             console.log(response.data);
           })
@@ -39,7 +39,9 @@ const GenerateQRcodeForm = (image) => {
          
             console.error(error);
           });
-
+  
+       
+  
     setShowForm(false);
     setShowCreateQRCodeButton(false);
   };

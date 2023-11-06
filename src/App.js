@@ -13,7 +13,7 @@ const App = () => (
       <SpecialMenu />
       </div>
       <Vision />
-    <Services />
+   
     <div style={{backgroundColor: ' #1c1c1c'}}>
     <Quection/>
     <MainServices/>

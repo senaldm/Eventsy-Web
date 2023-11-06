@@ -9,6 +9,7 @@
     align-items: center;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    position: relative; /* Ensure it's a positioned container for absolute positioning */
 }
 
 .footer h3 {
@@ -19,15 +20,16 @@
 
 .footer p {
     font-size: 18px;
-    justify-content: left;
-    /* Reduce the space between paragraphs */
+    text-align: left; /* Set text alignment to left for paragraphs */
+    margin: 10px 0; /* Adjust the margin for paragraphs */
 }
 
 .footer-section {
     flex: 1;
-    max-width: 33.33%;
+    max-width: 100%; /* Expand to full width for mobile screens */
     text-align: center;
     padding: 0 20px;
+    margin-bottom: 20px; /* Add margin to separate sections */
 }
 
 .footer-section ul {
@@ -36,7 +38,6 @@
 }
 
 .footer-section ul li {
-    margin: 10px 0; /* Adjust the margin */
     font-size: 16px;
 }
 
@@ -51,15 +52,14 @@
 }
 
 .footer .social-icons {
-    margin: 20px 0;
     display: flex;
     justify-content: center;
     font-family: 'Font Awesome', sans-serif;
 }
 
 .footer .social-icons a {
-    font-size: 50px;
-    margin: 0 15px;
+    font-size: 36px; /* Reduce the size of social icons for mobile screens */
+    margin: 0 10px; /* Reduce the spacing between social icons */
     text-decoration: none;
     color: rgb(29, 28, 27);
     transition: color 0.3s ease, transform 0.3s ease;
@@ -69,22 +69,17 @@
     color: #ff9900;
     transform: scale(1.2);
 }
-/* Add these styles to your existing CSS file */
 
-.footer {
-    position: relative; /* Ensure it's a positioned container for absolute positioning */
-  }
-  
-  .footer .scroll-to-top {
+/* Additional styles for the scroll-to-top button */
+.footer .scroll-to-top {
     position: absolute;
     bottom: 20px; /* Adjust the bottom spacing as needed */
     right: 20px; /* Adjust the right spacing as needed */
     text-align: right;
     font-size: 16px;
   }
-  
-  /* Additional styles for the scroll-to-top button */
-  .footer .scroll-to-top a {
+
+.footer .scroll-to-top a {
     color: #000; /* Choose your desired color */
     text-decoration: none;
     display: inline-block;
@@ -94,8 +89,75 @@
     transition: background 0.3s ease; /* Add a smooth transition effect */
   }
   
-  .footer .scroll-to-top a:hover {
+.footer .scroll-to-top a:hover {
     background: #333; /* Change background color on hover */
     color: #fff; /* Change text color on hover */
-  }
-  
+}
+
+/* Add your responsive styles for screens up to 425px here */
+@media screen and (max-width: 425px) {
+    .footer {
+        padding: 20px;
+        display: flex;
+        flex-direction: column; /* Reduce padding for smaller screens */
+    }
+
+    .footer h3 {
+       /* Decrease the heading font size */
+        margin-bottom: 10px;
+        font-size: 20px; /* Reduce margin below the heading */
+    }
+
+    .footer p {
+        font-size: 14px; /* Decrease font size for paragraphs */
+        margin: 5px 0; /* Reduce the margin between paragraphs */
+        text-align: center; /* Center-align paragraphs */
+    }
+
+    .footer-section {
+        max-width: 100%; /* Expand sections to full width */
+        text-align: center;
+        padding: 0;
+        margin-bottom: 10px; /* Add margin to separate sections */
+    }
+
+    .footer .social-icons a {
+       /* Reduce the size of social icons for small screens */
+        margin: 0 10px; /* Reduce the spacing between social icons */
+    }
+}
+@media screen and (min-width:2560px) {
+    .footer {
+        padding: 20px;
+        height: 20vh;
+      /* Reduce padding for smaller screens */
+    }
+
+    .footer h3 {
+       /* Decrease the heading font size */
+     
+        font-size: 60px; /* Reduce margin below the heading */
+    }
+
+    .footer a {
+        font-size: 40px; /* Decrease font size for paragraphs */
+        margin: 5px 0; /* Reduce the margin between paragraphs */
+        text-align: center; /* Center-align paragraphs */
+    }
+
+    .footer-section {
+        max-width: 100%; /* Expand sections to full width */
+        text-align: center;
+        padding: 0;
+        margin-bottom: 10px; /* Add margin to separate sections */
+    }
+
+    .footer .social-icons a {
+       /* Reduce the size of social icons for small screens */
+        margin: 0 10px; /* Reduce the spacing between social icons */
+    }
+    .footer-section img{
+        max-width: 30px;
+        max-height: 50px;
+    }
+}
