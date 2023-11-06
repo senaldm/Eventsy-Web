@@ -18,41 +18,34 @@ const GenerateQRcodeForm = (image) => {
   const handleGenerateQRCode = async (e) => {
     e.preventDefault();
   
- 
-    const formDataToSend = new FormData();
- 
-    formDataToSend.append('image', image);
+    try {
+      const user = auth.currentUser;
   
-   
-    formDataToSend.append('ticketType', formData.ticketType);
-    formDataToSend.append('qrCodeLocation', formData.qrCodeLocation);
-    formDataToSend.append('numberOfTickets', formData.numberOfTickets);
-  
-   
-    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-       
         const userEmail = user.email;
-       
-        formDataToSend.append('userEmail', userEmail);
-        
-        axios
-          .post('https://nice-williams.34-81-183-3.plesk.page/qrcode', formDataToSend)
-          .then((response) => {
-        
-            console.log(response.data);
-          })
-          .catch((error) => {
-         
-            console.error(error);
-          });
   
-        unsubscribe();
+        const queryParams = new URLSearchParams();
+        queryParams.append('ticketimage', image);
+        queryParams.append('ticketType', formData.ticketType);
+        queryParams.append('qrCodeLocation', formData.qrCodeLocation);
+        queryParams.append('numberOfTickets', formData.numberOfTickets);
+        queryParams.append('userEmail', userEmail);
+  
+        const url = `https://nice-williams.34-81-183-3.plesk.page/QRcreate?${queryParams.toString()}`;
+  
+        const response = await axios.get(url);
+  
+        console.log(response.data);
+      } else {
+        // Handle the case when there is no authenticated user.
       }
-    });
   
-    setShowForm(false);
-    setShowCreateQRCodeButton(false);
+      setShowForm(false);
+      setShowCreateQRCodeButton(false);
+    } catch (error) {
+      console.error(error);
+      // Handle the error gracefully, e.g., show an error message to the user.
+    }
   };
   
 

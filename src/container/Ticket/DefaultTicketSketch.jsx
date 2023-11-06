@@ -136,6 +136,7 @@ const DefaultTicketSketch = ({ formData, dropdownValue}) => {
                   accept="image/*"
                   style={{ display: 'none' }}
                   onChange={handleImageUpload}
+                  name='uploadticketimage'
                 />
                 <label htmlFor="imageInput" id="cameraIcon" className="camera-icon">
                   <i class="fa fa-camera" aria-hidden="true" style={{ color: 'rgb(190, 187, 187)', margin: '2px', fontSize: '20px' }}></i>

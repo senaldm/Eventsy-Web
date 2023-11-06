@@ -136,7 +136,7 @@ const TicketPageBody = () => {
   const handleShowGeneratedTicket = () => {
     
     axios
-      .get('https://nice-williams.34-81-183-3.plesk.page/qrcode', {
+      .get('https://nice-williams.34-81-183-3.plesk.page/QRcreate', {
         responseType: 'arraybuffer', 
       })
       .then((response) => {     
