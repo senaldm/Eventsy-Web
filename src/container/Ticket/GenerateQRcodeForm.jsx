@@ -60,7 +60,7 @@ fetch('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', requestOptions)
       console.log(result.data);
     },
     (error) => {
-      console.error(error);
+      console.log(error);
     }
   );
     
