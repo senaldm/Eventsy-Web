@@ -79,7 +79,7 @@ body {
 }
 
 /* Add media query for 2560px screens */
-@media screen and (max-width: 2560px) {
+@media screen and (min-width: 2560px) {
   .app_header {
     margin-right: 150px; /* Adjust right margin as needed */
   }

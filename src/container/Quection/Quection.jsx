@@ -31,7 +31,7 @@ const Quection = () => {
         <div className='quection_and_answers'>
           <h2 style={{ paddingBottom: '10px' }}>
             <span onClick={() => toggleParagraph(1)}>
-              Are you a wholesale wine supplier? {visibleParagraph === 1 ? '−' : '+'}
+             How to Create tickets? {visibleParagraph === 1 ? '−' : '+'}
             </span>
             <hr
               className={visibleParagraph === 1 ? 'active' : ''}
@@ -41,7 +41,7 @@ const Quection = () => {
           {visibleParagraph === 1 && (
             <div>
               <p style={{width:'50%'}}>
-                Our winery produces craft wine. Bulk orders are possible, but lots cannot be large.
+               Just navigate to ticket bar then fill the form and make you own ticket.
               </p>
             </div>
           )}
@@ -53,7 +53,7 @@ const Quection = () => {
           {/* Add padding-bottom to h2 for additional space between hr and paragraphs */}
           <h2 style={{ paddingBottom: '10px' }}>
             <span onClick={() => toggleParagraph(2)}>
-              Do you ship wine within the USA? {visibleParagraph === 2 ? '−' : '+'}
+             How to Validate tickets? {visibleParagraph === 2 ? '−' : '+'}
             </span>
             <hr
               className={visibleParagraph === 2 ? 'active' : ''}
@@ -63,13 +63,13 @@ const Quection = () => {
           {visibleParagraph === 2 && (
             <div>
               <p style={{width:'50%'}}>
-                Yes, we ship your orders to any state and city in the United States, as well as abroad.
+               You have to download our mobile app and validate tickets with users varification code send that to you.
               </p>
             </div>
           )}
            <h2 style={{ paddingBottom: '10px' }}>
             <span onClick={() => toggleParagraph(3)}>
-            How many varieties are there in your winery? {visibleParagraph === 3 ? '−' : '+'}
+           Is this a free service? {visibleParagraph === 3 ? '−' : '+'}
             </span>
             <hr
               className={visibleParagraph === 3 ? 'active' : ''}
@@ -79,13 +79,13 @@ const Quection = () => {
           {visibleParagraph === 3 && (
             <div>
               <p style={{width:'50%'}}>
-              Our winery offers wine-lovers more than 10 different varieties of wines with different aging periods.
+            Eventsy is a fully free system make for you.
               </p>
             </div>
           )}
            <h2 style={{ paddingBottom: '10px' }}>
             <span onClick={() => toggleParagraph(4)}>
-            Do you advise on the choice of wine? {visibleParagraph === 4 ? '−' : '+'}
+            How to contact event palnners? {visibleParagraph === 4 ? '−' : '+'}
             </span>
             <hr
               className={visibleParagraph === 4 ? 'active' : ''}
@@ -95,7 +95,7 @@ const Quection = () => {
           {visibleParagraph === 4 && (
             <div>
               <p style={{width:'50%'}}>
-              Yes. Our winery experts will tell you more about the varieties and help you choose the best option for you.
+             In the mobile app navigate to vendors tap try to figure out to find suitable person for you with request.
               </p>
             </div>
           )}

@@ -28,8 +28,8 @@
 .menu-item-text {
   color: #333;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 70%;
+  left: 55%;
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 60%;
@@ -41,11 +41,12 @@
   margin: 10px 20px;
   color: white;
   font-family: 'Courier New', Courier, monospace;
+  justify-content: center;
 }
 
 .menu-item-subheader {
   font-size: 16px;
-  margin: 10px 0;
+  margin: 10px 20px;
 }
 
 .menu-item-button {
@@ -71,7 +72,7 @@
 /* Media queries for responsiveness */
 
 /* For small screens like mobile phones (320px width) */
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) {
   .menu-item {
     margin-top: 10%;
   }

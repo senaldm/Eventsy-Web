@@ -16,7 +16,7 @@ const Vision = () => (
         <img src='' alt='' />
       </div>
       <div className='vision_subheader'>
-        <p style={{color:'white'}}>
+        <p  className='vision-content'style={{color:'white'}}>
           Our vision dances with dreams, orchestrating a symphony of seamless
           event planning. We are the enchanted platform, where seekers connect
           with the finest event planners, weave their own tapestry of details,

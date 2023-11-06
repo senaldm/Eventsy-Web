@@ -18,34 +18,32 @@ const GenerateQRcodeForm = (image) => {
   const handleGenerateQRCode = async (e) => {
     e.preventDefault();
   
-    try {
-      const user = auth.currentUser;
+ 
+    const formDataToSend = new FormData();
+ 
+    formDataToSend.append('ticketimage', image);
   
-      if (user) {
-        const userEmail = user.email;
+   
+    formDataToSend.append('ticketType', formData.ticketType);
+    formDataToSend.append('qrCodeLocation', formData.qrCodeLocation);
+    formDataToSend.append('numberOfTickets', formData.numberOfTickets);
   
-        const queryParams = new URLSearchParams();
-        queryParams.append('ticketimage', image);
-        queryParams.append('ticketType', formData.ticketType);
-        queryParams.append('qrCodeLocation', formData.qrCodeLocation);
-        queryParams.append('numberOfTickets', formData.numberOfTickets);
-        queryParams.append('userEmail', userEmail);
+   
   
-        const url = `https://nice-williams.34-81-183-3.plesk.page/QRcreate?${queryParams.toString()}`;
+        axios
+          .post('https://nice-williams.34-81-183-3.plesk.page/QRcreate', formDataToSend)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+         
+            console.error(error);
+          });
   
-        const response = await axios.get(url);
+       
   
-        console.log(response.data);
-      } else {
-        // Handle the case when there is no authenticated user.
-      }
-  
-      setShowForm(false);
-      setShowCreateQRCodeButton(false);
-    } catch (error) {
-      console.error(error);
-      // Handle the error gracefully, e.g., show an error message to the user.
-    }
+    setShowForm(false);
+    setShowCreateQRCodeButton(false);
   };
   
 
@@ -56,7 +54,7 @@ const GenerateQRcodeForm = (image) => {
       {showForm &&  (
         <div className="generate-qr-code-form">
           <h3>Generate QR Code</h3>
-          <form>
+          <form onSubmit={handleGenerateQRCode}>
             <div className="form-group">
               <label htmlFor="ticketType">Ticket Type:</label>
               <select
@@ -99,7 +97,7 @@ const GenerateQRcodeForm = (image) => {
             </div>
 
             <div className="button-group">
-              <button type="button" onClick={handleGenerateQRCode }>
+              <button type="submit">
                 Generate QR Code
               </button>
               <button type="button" onClick={() => setShowForm(false)}>

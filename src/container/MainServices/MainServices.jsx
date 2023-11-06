@@ -11,7 +11,7 @@ const MainServices = () => (
       </div>
       <h1>Ideas about Designing</h1>
       <hr className='line'/>
-      <p>We offer free delivery to any American city and abroad for all orders over $99.</p>
+      <p>We offer you the  search service to search on image design. </p>
     </div>
     <div>
       <div className="circle">
@@ -19,7 +19,7 @@ const MainServices = () => (
       </div>
       <h1>Connect with Best Planners</h1>
       <hr className='line'/>
-      <p>We accept Visa and MasterCard, PayPal, Trustly, and other payment methods.</p>
+      <p>We gather all the planners ,photographers and all other event managers for you to one place.</p>
     </div>
     <div>
       <div className="circle">
@@ -27,7 +27,7 @@ const MainServices = () => (
       </div>
       <h1>Keep Your Own Planning</h1>
       <hr className='line'/>
-      <p>We do not use chemical additives or aggressive fertilizers. Our wines are 100% organic.</p>
+      <p>We are providing best place to plan and keep you own things.</p>
     </div>
     <div>
       <div className="circle">
@@ -35,7 +35,7 @@ const MainServices = () => (
       </div>
       <h1>Manage Event Tickets</h1>
       <hr className='line'/>
-      <p>Sign up to get a 15% discount on your next order and get an advantage of our special offers.</p>
+      <p>Offering a free service to create creative  tickets and validate tickets securely.</p>
     </div>
   </div>
 );
