@@ -69,3 +69,54 @@
     text-decoration: none;
     margin-top: 20px;
   }
+  @media screen and (max-width: 425px) {
+    .app_aboutus_app_bg {
+      height: auto; /* Let the content determine the height */
+    }
+  
+    .about_content {
+      flex-direction: column; /* Stack the elements vertically */
+      width: 100%; /* Expand to full width */
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  
+    .about_image {
+      max-width: 60%; /* Resize the image to fit the width */
+      height: auto; /* Maintain aspect ratio */
+    }
+  
+    .headtext_cormaortant {
+      font-size: 24px; /* Reduce the heading font size */
+      text-align: center; /* Center align the heading */
+      margin-bottom: 10px; /* Reduce margin below heading */
+      padding-left: 0; /* Remove left padding */
+    }
+  
+    .header1 {
+      font-size: 16px; /* Reduce font size for paragraphs */
+      padding-left: 0; /* Remove left padding */
+      max-width: 100%; /* Expand paragraphs to full width */
+      margin-top: 10px; /* Reduce top margin for paragraphs */
+    }
+  
+    .btn_primary {
+      font-size: 16px; /* Reduce button text size */
+    }
+    .headtext_cormaortant::after {
+      width: 100%;
+    }
+  }
+  @media screen and (min-width: 2560px) {
+    .headtext_cormaortant {
+      font-size: 48px; /* Increase the heading font size for large screens */
+      /* Center align the heading */
+    }
+  
+    .header1 {
+      font-size: 44px; /* Increase font size for paragraphs on large screens */
+    }
+  
+    .btn_primary {
+      font-size: 24px; /* Increase button text size for large screens */
+    }
+  }

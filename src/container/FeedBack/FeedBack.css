@@ -8,11 +8,15 @@
   .feedback-header {
     font-size: 24px;
     margin-bottom: 20px;
+    justify-content: center;
+    text-align: center;
+   margin-left: 20%;
   }
   
   .feedback-form {
     display: flex;
     flex-direction: column;
+    
   }
   
   .form-group2 {
@@ -49,4 +53,73 @@
     font-size: 18px;
     margin-top: 20px;
   }
+  @media (min-width: 2560px) {
+    .feedback-header {
+      font-size: 80px;
+    }
+.feedback-container{
+  height: 60vh;
+}
+    label {
+      font-size: 50px;
+    }
+  }
+  
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group2 {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+  
+    
+    @media (min-width: 2560px) {
+      padding: 20px;
+    }
+  }
+  
+  textarea {
+    height: 150px;
+  }
+  
+  .submit-button {
+    width: 150px;
+    background-color: #0077b6;
+    color: #700f0f;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+ 
+  @media (min-width: 2560px) {
+    .submit-button {
+      width:100vw;
+      height: 5vh;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 100%;
+      
+    }
+    .feedback-form{
+      margin-top: 10%;
+    }
+  }
+  
+  
   

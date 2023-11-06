@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { MdOutlineRestaurantMenu } from 'react-icons/md';
+import { MdClose, } from 'react-icons/md';
 import images from '../../constants/images';
 import LoginPopup from '../../container/Log/LoginScreen'
 import SignUpPopUp from '../../container/SignUp/SignUpScreen';
@@ -71,8 +71,8 @@ const Navbar = () => {
       </div>
       <ul className="app_navbar-links">
       <li className="p_opensans">
-      <a href="./ticket">Tickets</a>
-  </li>
+        <a href="./ticket">Tickets</a>
+      </li>
 
         <li className="p_opensans">
           <a href="#invitations">Invitations</a>
@@ -102,13 +102,13 @@ const Navbar = () => {
           </>
         ) : (
           <>
-          <a href="#log" className="p_opensans" onClick={openLoginPopup}>
-          Log In
-        </a>
-            <div></div>
-            <a href="#signup" className="p_opensans" onClick={opensignupopup}>
-          Sign Up
-        </a>
+          <a href="#log" className="p_opensans" onClick={openLoginPopup} style={{marginRight:'0'}}>
+            Log In
+          </a>
+          <a href="" className='p_opensans'>|</a>
+            <a href="#signup" className="p_opensans" onClick={opensignupopup} style={{marginLeft:'0'}}>
+            Sign Up
+          </a>
           </>
         )}
       </div>
@@ -120,7 +120,7 @@ const Navbar = () => {
         />
         {ToggleMenu && (
           <div className="app_navbar-smallscreen_overlay flex_center slide-bottom">
-            <MdOutlineRestaurantMenu
+            <MdClose
               fontSize={27}
               className="overlay_close"
               onClick={() => setToggleMenu(false)}
@@ -148,12 +148,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-              <a href="#log" className="p_opensans" onClick={openLoginPopup}>
+              <a href="#log"  style={{ }} onClick={openLoginPopup}>
                  Log In
                 </a>
                 </li>
                  <li>
-        <a href="#signup" className="p_opensans" onClick={opensignupopup}>
+        <a href="#signup"   style={{ }} onClick={opensignupopup}>
                   SignUp
                </a>
              </li>

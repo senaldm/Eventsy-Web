@@ -9,25 +9,26 @@
 }
 /* Add background image to the navigation bar */
 .background-container {
-  background-image: url('./assets/32836.png');
+  background-image: url('./assets/workers2.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-y: auto; /* Make the container scrollable */
   height: 100vh;
-  width: 100%;/* Hide overflow to prevent scroll bars */
+  width: 100%;
+  overflow-x: hidden;/* Hide overflow to prevent scroll bars */
 }
 
 
 .main-image {
-  background-image: url('./assets/32836.png');
+  background-image: url('./assets/workers2.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh; 
-  width: 100vw;
+  height: 100vh;
+  width: 100vw; 
   /* Set the height to 100vh for full viewport height */
 }
 .background-specialmenu{
@@ -45,6 +46,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 100vh; 
+ 
 }
 
 .app__wrapper {

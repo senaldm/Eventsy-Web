@@ -6,11 +6,11 @@ const Vision = () => (
     <div className='vision_wrapper'>
       <div className='vision_header'>
 
-        <h1 style={{color:'white'}}>Our Vision</h1>
+        <h1  className='header'style={{color:'white'}}>Our Vision</h1>
 
       </div>
       <div className='vision_sub2'>
-        <h2>One place for Everything</h2>
+        <h2 className='vision_text'>One place for Everything</h2>
       </div>
       <div>
         <img src='' alt='' />

@@ -30,7 +30,7 @@
   text-align: center;
   font-size: 50px;
   font-family: 'Courier New', Courier, monospace;
-  color: rgb(73, 52, 52);
+  color:white;
 
   display: flex;
   justify-content: center;
@@ -91,25 +91,41 @@
 }
 
 /* Responsive adjustments for mobile screens */
-@media (max-width: 767px) {
+/* Responsive adjustments for mobile screens */
+
+@media screen and (max-width: 767px) and ((min-width:320px)) {
   .vision_header {
-    font-size: 30px; /* Reduce text size for mobile screens */
+    font-size: 30px; 
+    color: white;/* Reduce text size for mobile screens */
   }
 
-  .vision_sub2,
+  .vision_text,
   .vision_subheader {
-    font-size: 16px;
-    justify-content: center;
-    text-align: center; /* Reduce text size for mobile screens */
+    font-size: 25px;
+    left: 0;
+    right: 0; /* Center-align text for mobile screens */
   }
 
-  .custom_button {
-    text-align: center; /* Center align the button text */
+ .vision-content{
+  font-size: 15px;
+ }
+}
+
+/* Styles for larger screens (2560px) */
+@media (min-width: 2560px) {
+  .vision_header {
+    font-size: 180px; /* Increase text size for larger screens */
   }
 
-  .custom_button button {
-    margin: 1rem auto; /* Center align the button horizontally */
-    font-size: 16px; 
-    align-items: center;/* Reduce button text size for mobile screens */
+  .vision_text,
+  .vision_subheader {
+    font-size: 100px;
+    left: 0;
+    right: 0; /* Center-align text for mobile screens */
+  }
+  .vision-content{
+    font-size: 40px;
+    color: rgb(225, 240, 240);
   }
 }
+

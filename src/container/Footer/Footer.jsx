@@ -15,12 +15,9 @@ const Footer = () => {
       <div className="footer-section contact" id='contact'>
         <h3>Contact Us</h3>
         <ul>
-          <li> <a href="mailto:caliwines@email.com">
-         caliwines@email.com
+          <li> <a href="mailto:team.eventsy@email.com">
+         team.eventsy@email.com
         </a></li>
-       <li>Phone: +1 (234) 567 89 00</li>
-        
-        <li>Address: 1111 White Ln, St Helena, CA 94574 </li>
         </ul>
       </div>
 

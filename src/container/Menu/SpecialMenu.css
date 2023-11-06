@@ -69,25 +69,39 @@
   margin-left: 5px;
 }
 
-/* Media queries for responsiveness */
 
-/* For small screens like mobile phones (320px width) */
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 320px) and (max-width:425px) {
   .menu-item {
-    margin-top: 10%;
+    margin-top: 20px; 
+    width: 100%; 
+    display: flex;
+  }
+
+  .menu-item-image-container {
+  max-width: 350px;  
+  display: flex;
+  flex-direction: column;
+  }
+
+  .menu-item-image-container img {
+    max-width: 10%; 
+    display: flex;
+    flex-direction: column; /* Maintain the aspect ratio */
   }
 }
 
+
 /* For large screens like 2560px width */
-@media screen and (min-width: 2560px) {
+@media screen and (min-width: 1440) {
   .menu-item {
     margin-top: 20%;
-    height: 100%;
+    max-width: 30vw;
+    height: 20vh;
    
   }
   .menu-item-image-container {
-    width: 2000px;
-    height: 1000px;
+    max-width: 60vw;
+    max-height: 80vh;
   }
   .menu-item-text{
     font-size: 200px;
@@ -97,7 +111,7 @@
 /* For laptops and other screens */
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
   .menu-item-image-container {
-    max-width: 300px;
+    max-width: 100px;
     max-height: 400px;
   }
 }

@@ -34,8 +34,8 @@
 .p_opensans {
   margin: 0;
   color: var(--color-golden);
-  font-family: 'Open Sans';
-  font-style: oblique;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100vw;
 }
 
 body {
@@ -79,7 +79,7 @@ body {
 }
 
 /* Add media query for 2560px screens */
-@media screen and (min-width: 2560px) {
+@media screen and ((min-width: 2560px )) {
   .app_header {
     margin-right: 150px; /* Adjust right margin as needed */
   }
