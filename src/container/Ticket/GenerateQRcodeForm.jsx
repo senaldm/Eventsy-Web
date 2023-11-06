@@ -30,74 +30,16 @@ const GenerateQRcodeForm = (image) => {
   
    
   
-        // axios
-        //   .post('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', formDataToSend)
-        //   .then((response) => {
-        //     console.log(response.data);
-        //   })
-        //   .catch((error) => {
+        axios
+          .post('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', formDataToSend)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
          
-        //     console.error(error);
-        //   });
+            console.error(error);
+          });
 
-// <<<<<<< senaldm-patch-2
-//     // Define the request headers, including the 'Access-Control-Allow-Origin' header and 'Content-Type'
-//     var headers = new Headers({
-//       'Access-Control-Allow-Origin': 'https://eventsy-gray.vercel.app', // Set the allowed origin
-//     });
-    
-//     // Define the request options, including the method, headers, and body
-//     var requestOptions = {
-//       method: 'POST', // Use the HTTP method 'POST' for sending form data
-//       headers: headers,
-//       body: formDataToSend, // Use the FormData object as the request body
-//     };
-    
-//     fetch('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', requestOptions)
-//       .then((res) => res.json())
-//       .then(
-//         (result) => {
-//           console.log(result.data);
-//         },
-//         (error) => {
-//           console.error(error);
-//         }
-//       );
-      
-// =======
-
-
-
-
-fetch('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json', // Set the content type for the data
-    'Access-Control-Allow-Origin': '*',
-  },
-  body: JSON.stringify(requestOptions), // Convert data to JSON format
-})
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Network response was not ok');
-    }
-  })
-  .then(data => {
-    // Use the response data from the server
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Fetch error: ' + error);
-  });
-
-
-
-    
-    
-       
-  
     setShowForm(false);
     setShowCreateQRCodeButton(false);
   };
