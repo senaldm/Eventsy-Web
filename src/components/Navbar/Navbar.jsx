@@ -147,6 +147,16 @@ const Navbar = () => {
                   ContactUs
                 </a>
               </li>
+              <li>
+              <a href="#log" className="p_opensans" onClick={openLoginPopup}>
+                 Log In
+                </a>
+                </li>
+                 <li>
+        <a href="#signup" className="p_opensans" onClick={opensignupopup}>
+                  SignUp
+               </a>
+             </li>
             </ul>
           </div>
         )}

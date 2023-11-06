@@ -13,7 +13,9 @@
   display: flex;
   position: relative;
 }
-
+.vision-content{
+  color: rgb(247, 241, 241);
+}
 .vision_container::before {
   content: '';
   position: absolute;

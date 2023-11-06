@@ -1,66 +1,103 @@
 .app_header {
-    text-align: center;
-    margin: 0; /* Reset top and bottom margin */
-    margin-right: 80px;
-    justify-content: center;
-    align-items: center;
-   
-  }
-  
-  .app_wrapper_info {
+  text-align: center;
+  margin: 0; /* Reset top and bottom margin */
+  margin-right: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+.app_wrapper_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 40%;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.header-content {
+  text-align: left;
+}
+
+.app_header-h1 {
+  font-family: var(--font-base);
+  color: var(--color-white);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 117px;
+  font-size: 84px;
+  margin: 0;
+  justify-content: center;
+  text-align: center; /* Reset top and bottom margin */
+}
+
+.p_opensans {
+  margin: 0;
+  color: var(--color-golden);
+  font-family: 'Open Sans';
+  font-style: oblique;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-black);
+  overflow: hidden;
+}
+
+@media screen and(max-width:320px)
+{
+  .header-content{
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 40%;
     justify-content: center;
-    margin-top: 10%;
   }
-  
+}
+
+@media screen and (max-width: 650px) {
   .header-content {
-    text-align: left;
-  }
-  
-  .app_header-h1 {
-    font-family: var(--font-base);
-    color: var(--color-white);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 117px;
-    font-size: 84px;
-    margin: 0; 
     justify-content: center;
-    text-align: center;/* Reset top and bottom margin */
+    align-items: center;
+    text-align: center;
+    padding-top: 30%;
   }
-  
-  .p_opensans {
-    margin: 0;
-    color:var(--color-golden);
-    font-family: 'Open Sans',;
-    font-style:oblique;
+
+  .app_header-h1 {
+    font-size: 60px;
+    line-height: 60px; /* Adjust line-height for better readability */
   }
-  
- 
+
+  .custom_button {
+    margin-left: 0; /* Center button horizontally */
+  }
   body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-black);
     overflow: hidden;
   }
-  @media screen and (max-width: 650px) {
-    .header-content {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding-top: 30%;
-    }
-  
-    .app_header-h1 {
-      font-size: 60px;
-      line-height: 60px; /* Adjust line-height for better readability */
-    }
-  
-    .custom_button {
-      margin-left: 0; /* Center button horizontally */
-    }
+}
+
+/* Add media query for 2560px screens */
+@media screen and (min-width: 2560px) {
+  .app_header {
+    margin-right: 150px; /* Adjust right margin as needed */
   }
-  
+
+  .app_wrapper_info {
+    margin-left: 30%; /* Adjust left margin as needed */
+    margin-top: 20%; /* Adjust top margin as needed */
+  }
+
+  .app_header-h1 {
+    font-size: 200px; /* Adjust font size as needed */
+     /* Adjust line-height as needed */
+  }
+  .p_opensans{
+   font-size: 40px;
+   margin-top: 20%;
+  }
+  body {
+    overflow: hidden;
+  }
+}

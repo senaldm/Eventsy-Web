@@ -21,7 +21,7 @@ const GenerateQRcodeForm = (image) => {
  
     const formDataToSend = new FormData();
  
-    formDataToSend.append('image', image);
+    formDataToSend.append('ticketimage', image);
   
    
     formDataToSend.append('ticketType', formData.ticketType);
@@ -29,17 +29,10 @@ const GenerateQRcodeForm = (image) => {
     formDataToSend.append('numberOfTickets', formData.numberOfTickets);
   
    
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-       
-        const userEmail = user.email;
-       
-        formDataToSend.append('userEmail', userEmail);
-        
+  
         axios
-          .post('https://nice-williams.34-81-183-3.plesk.page/qrcode', formDataToSend)
+          .post('https://nice-williams.34-81-183-3.plesk.page/QRcreate', formDataToSend)
           .then((response) => {
-        
             console.log(response.data);
           })
           .catch((error) => {
@@ -47,9 +40,7 @@ const GenerateQRcodeForm = (image) => {
             console.error(error);
           });
   
-        unsubscribe();
-      }
-    });
+       
   
     setShowForm(false);
     setShowCreateQRCodeButton(false);
@@ -63,7 +54,7 @@ const GenerateQRcodeForm = (image) => {
       {showForm &&  (
         <div className="generate-qr-code-form">
           <h3>Generate QR Code</h3>
-          <form>
+          <form onSubmit={handleGenerateQRCode}>
             <div className="form-group">
               <label htmlFor="ticketType">Ticket Type:</label>
               <select
@@ -106,7 +97,7 @@ const GenerateQRcodeForm = (image) => {
             </div>
 
             <div className="button-group">
-              <button type="button" onClick={handleGenerateQRCode }>
+              <button type="submit">
                 Generate QR Code
               </button>
               <button type="button" onClick={() => setShowForm(false)}>
