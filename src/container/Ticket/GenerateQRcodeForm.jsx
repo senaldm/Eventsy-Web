@@ -31,7 +31,7 @@ const GenerateQRcodeForm = (image) => {
    
   
         axios
-          .post('https://nice-williams.34-81-183-3.plesk.page/QRcreate', formDataToSend)
+          .post('https://dreamy-wilson.34-81-183-3.plesk.page/QRcreate', formDataToSend)
           .then((response) => {
             console.log(response.data);
           })
