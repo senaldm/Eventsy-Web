@@ -1,0 +1,58 @@
+.Privacy-content body {
+  font-family: Arial, sans-serif;
+  margin-left: 0;
+  padding: 0;
+  overflow-y: scroll;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center; /* Align the content center horizontally */
+  align-items: center; /* Align the content center vertically */
+  min-height: 100vh; /* Ensure the content takes at least the full viewport height */
+}
+
+.Privacy-content {
+  border: 1px solid #ccc; /* Add a border around the content */
+  padding: 20px; /* Add padding inside the border */
+  max-width: 800px; /* Set a maximum width for the content */
+  width: 100%; /* Make the content responsive */
+  box-sizing: border-box;
+  text-align: center; /* Include padding and border in the element's total width and height */
+}
+
+.panel-item-Home {
+  display: flex;
+  align-items: center;
+  color: #007bff;
+  padding: 10px;
+}
+
+.panel-item-Home i {
+  margin-right: 8px;
+}
+
+.Privacy-content h1 {
+  color: #333;
+}
+
+.Privacy-content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.Privacy-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Privacy-content li {
+  margin-bottom: 10px;
+}
+
+.Privacy-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.Privacy-content a:hover {
+  text-decoration: underline;
+}
