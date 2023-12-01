@@ -226,3 +226,70 @@
   }
  
 }
+/* Your existing CSS... */
+
+/* Your existing CSS... */
+
+@media screen and (max-width: 1150px) {
+    .app_navbar-links {
+      display: none;
+    }
+    .app_navbar-smallscreen {
+      display: flex;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .app_navbar {
+      padding: 1rem;
+    }
+    .app_navbar-login-signup {
+      display: none;
+    }
+    .app_navbar-logo img {
+      width: 110px;
+    }
+  }
+  
+  /* Add this media query for larger screens */
+  @media screen and (min-width: 1600px) {
+    .app_navbar-links a,
+    .app_navbar-login-signup a {
+      font-size: 14px; /* Adjust the font size as needed for larger screens */
+    }
+  }
+  
+  /* Add this media query for even larger screens if necessary */
+  @media screen and (min-width: 1920px) {
+    .app_navbar-links a,
+    .app_navbar-login-signup a {
+      font-size: 16px; /* Adjust the font size as needed for even larger screens */
+    }
+  }
+  
+  /* Add this media query for 2560px screens */
+  @media screen and (min-width: 2560px) {
+    .app_navbar-links a,
+    .app_navbar-login-signup a {
+      font-size: 40px;
+       /* Adjust the font size as needed for 2560px screens */
+    }
+    .app_navbar {
+      padding: 4rem; /* Adjust padding as needed for 2560px screens */
+    }
+    .app_navbar-logo img {
+      width: 150px; /* Adjust logo size as needed for 2560px screens */
+      height: 150px;
+    }
+    .app_navbar-links{
+        justify-content: center;
+        padding-left: 120px;
+    }
+    .app_navbar-links li {
+        margin: 0 3rem 0 1rem;
+        justify-content: center;
+        cursor: pointer;
+    }
+    /* Add any other necessary style adjustments for 2560px screens */
+  }
+  

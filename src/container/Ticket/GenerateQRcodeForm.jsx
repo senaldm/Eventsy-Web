@@ -31,7 +31,11 @@ const GenerateQRcodeForm = (image) => {
    
   
         axios
+<<<<<<< HEAD
           .post('https://eventsy.coderog.com/QRcreate', formDataToSend)
+=======
+          .post('https://dreamy-wilson.34-81-183-3.plesk.page/', formDataToSend)
+>>>>>>> d342e05fee80f2ae54ea33e14de50a175a157a73
           .then((response) => {
             console.log(response.data);
           })
