@@ -35,8 +35,13 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a onClick={() => scrollToSection('termconditions')} href="#">
+            <a  href="/termandcondition">
               Term and Conditions
+            </a>
+          </li>
+          <li >
+            <a href='/privacyandpolicy'>
+            Privacy and Policy
             </a>
           </li>
         </ul>
