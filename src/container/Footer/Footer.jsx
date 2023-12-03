@@ -49,7 +49,7 @@ const Footer = () => {
       <div className="footer-section download-app" style={{flexDirection:'column'}}>
         <div className=''>
         <h3>Download Our App</h3>
-        <a href="https://drive.google.com/file/d/1Bn7VSod5Xd1hIMc2ybNNKbH5w9oB3WbG/view?usp=sharing">
+        <a href="https://shorturl.at/ipqsU">
           <img src={images.logo} alt="Download on the App Store"  style={{objectFit:'contain',width:'50px',height:'50px'}}/>
         </a>
         </div>
